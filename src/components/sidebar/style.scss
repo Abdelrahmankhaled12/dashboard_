@@ -1,0 +1,70 @@
+@import '../../mixins.scss';
+
+.sidebar {
+    width: 220px;
+    background-color: var(--sidebarColorMain);
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    display: none;
+
+    @include md {
+        display: block;
+    }
+
+    .logo {
+        margin: 20px 0px;
+        text-align: center;
+    }
+
+    ul {
+        &::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #88888887;
+            border-radius: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: var(--sidebarColorMain);
+        }
+
+        height: 70vh;
+        overflow-y: auto;
+
+        li {
+            display: flex;
+            align-items: center;
+            color: rgb(238, 238, 238);
+            font-size: 1rem;
+            padding: 9px 16px;
+            border-radius: 6px;
+            list-style: none;
+            cursor: pointer;
+            transition: 0.5s;
+
+            svg {
+                color: rgb(238, 238, 238);
+                opacity: 0.5;
+            }
+
+            &:hover {
+                background-color: rgba(164, 164, 164, 0.134);
+            }
+        }
+
+        li.active {
+            color: #FFFFFF;
+            background-color: rgba(164, 164, 164, 0.134);
+        }
+    }
+
+    p {
+        color: rgba(255, 255, 255, 0.716);
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}

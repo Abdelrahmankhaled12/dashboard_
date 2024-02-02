@@ -1,0 +1,84 @@
+.table {
+
+    #tableTitle {
+        color: #89868d !important;
+    }
+
+    svg {
+        color: #89868d !important;
+    }
+
+    tr {
+        border-bottom: 1px solid #e7e7e8 !important;
+
+    }
+
+    th {
+        color: #89868d !important;
+        border-bottom: 1px solid #e7e7e8 !important;
+        font-weight: 500;
+        font-size: 14px;
+
+        span {
+            color: #89868d !important;
+        }
+    }
+
+    td {
+        color: #89868d !important;
+        border-bottom: 1px solid #e7e7e8 !important;
+    }
+
+    span {
+        svg {
+            color: #89868d !important;
+        }
+    }
+
+    .footerTable {
+        div {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+
+        button {
+            svg {
+                color: rgba(255, 255, 255, 0.5) !important;
+            }
+        }
+
+
+    }
+}
+
+#menu- {
+    .MuiMenu-paper {
+        background-color: var(--sidebarColorMain) !important;
+    }
+
+    ul {
+        background-color: var(--sidebarColorMain) !important;
+        border-color: var(--sidebarColorMain) !important;
+        color: rgba(255, 255, 255, 0.95) !important;
+
+        li {
+            font-size: 14px;
+        }
+    }
+
+    .css-altyb0.Mui-selected {
+        background-color: rgba(64, 122, 214, 0.16) !important;
+    }
+}
+
+.selected {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+
+.checkbox {
+    color: rgb(64, 122, 214) !important;
+}

@@ -1,0 +1,27 @@
+@import '../../mixins.scss';
+
+.headerDashboard {
+    background-color: rgb(27, 38, 53);
+    position: sticky;
+    z-index: 1100;
+    top: 0;
+
+    .flex {
+        justify-content: space-between;
+        align-items: center;
+
+        .menuDash {
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            opacity: 1;
+            svg {
+                font-size: 35px;
+            }
+            @include md {
+                opacity: 0;
+            }
+        }
+    }
+}

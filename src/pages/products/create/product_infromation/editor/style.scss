@@ -1,0 +1,23 @@
+.quill {
+    min-height: 300px;
+    margin-bottom: 15px;
+    .ql-toolbar,
+    .ql-editor {
+        background-color: white;
+    }
+
+    .ql-editor {
+        min-height: 300px;
+    }
+}
+
+.ql-editor.ql-blank::before {
+    color: #89868d;
+    content: attr(data-placeholder);
+    font-style: italic;
+    left: 15px;
+    pointer-events: none;
+    position: absolute;
+    right: 15px;
+    font-size: 20px;
+}

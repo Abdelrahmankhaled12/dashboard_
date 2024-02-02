@@ -1,0 +1,61 @@
+.warning {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.216);
+    width: 100%;
+    height: 100vh;
+    transition: 0.5s;
+
+    .content {
+        position: absolute;
+        width: 500px;
+        background-color: rgb(254, 254, 254);
+        padding: 20px;
+        border-radius: 5px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        p {
+            font-size: 16px;
+            text-align: center;
+            color: #777;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+
+            button {
+                padding: 10px 45px;
+                font-size: 14px;
+                font-weight: 600;
+                color: white;
+                margin-left: 8px;
+                border-radius: 4px;
+                margin-top: 10px;
+                cursor: pointer;
+                transition: 0.5s;
+            }
+
+            button.sure {
+                border: 1px solid rgb(99, 102, 241);
+                background-color: rgb(99, 102, 241);
+
+                &:hover {
+                    color: rgb(99, 102, 241);
+                    background-color: transparent;
+                }
+            }
+
+            button.cancel {
+                border: 1px solid rgba(255, 0, 0, 0.781);
+                background-color: rgba(255, 0, 0, 0.781);
+
+                &:hover {
+                    color: rgba(255, 0, 0, 0.781);
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}

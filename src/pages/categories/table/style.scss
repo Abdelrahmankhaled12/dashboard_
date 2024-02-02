@@ -1,0 +1,63 @@
+@import '../../../mixins.scss';
+
+.footerTableBox {
+    ul {
+        li {
+            button.Mui-selected {
+                background-color: var(--primary);
+                color: white;
+                border: 1px solid var(--primary);
+
+                &:hover {
+                    background-color: var(--primary);
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.buttonsTableHeaderCategory {
+    display: flex;
+    gap: 10px;
+}
+
+.css-h5odmr-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
+.css-h5odmr-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+    color: var(--primary) !important;
+}
+
+.remove,
+.edite {
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 22px;
+    margin: 0px 10px;
+    transition: 0.5s;
+}
+
+.edite {
+    color: #00fb00 !important;
+}
+
+.topTaple {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex-wrap: wrap;
+    margin: 13px 0px;
+    padding: 0px 15px;
+
+    .buttonsTableHeaderCategory {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        button {
+            font-size: 14px;
+            @include sm {
+                font-size: 17px;
+            }
+        }
+    }
+}

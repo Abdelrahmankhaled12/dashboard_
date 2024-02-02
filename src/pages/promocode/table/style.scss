@@ -1,0 +1,42 @@
+.footerTableBox {
+    ul {
+        li {
+            button.Mui-selected {
+                background-color: var(--primary);
+                color: white;
+                border: 1px solid var(--primary);
+
+                &:hover {
+                    background-color: var(--primary);
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.buttonsTableHeaderCategory {
+    display: flex;
+    gap: 10px;
+
+    .export {
+        font-size: 17px;
+        text-transform: uppercase;
+        padding: 4px 20px;
+        transition: 0.5s;
+        font-weight: 500;
+        border-radius: 5px;
+        border: 1px solid #c5c6c9;
+        color: #8a8d93;
+        background: rgba(0, 0, 0, 0);
+    }
+}
+
+.css-h5odmr-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
+.css-h5odmr-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+    color: var(--primary) !important;
+}
+
+th {
+    background-color: #f3f3f4;
+}

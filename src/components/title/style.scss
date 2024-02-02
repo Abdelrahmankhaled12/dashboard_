@@ -1,0 +1,23 @@
+.title {
+    padding: 20px 0px;
+    margin-bottom: 30px;
+    .flex {
+        align-items: center;
+        margin-top: 7px;
+        p {
+            font-size: 25px;
+            color: #b4b2b7;
+            &:first-of-type {
+                cursor: pointer;
+            }
+            &:last-of-type {
+                color: #544f5a;
+            }
+        }
+        span {
+            color: #b4b2b7;
+            font-size: 25px;
+            margin: 0px 8px;
+        }
+    }
+}

@@ -1,0 +1,136 @@
+@import '../../../mixins.scss';
+
+.product {
+    .div {
+        box-shadow: 0 0.375rem 1rem 0 rgba(58, 53, 65, .12);
+        padding: 30px 20px;
+        background-color: white;
+        border-radius: 6px;
+        height: fit-content;
+        margin: 20px 0px;
+
+        h2 {
+            color: #544f5a;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+
+        .form {
+
+
+            .css-xekly4 {
+                width: 100%;
+            }
+        }
+    }
+
+    form {
+        .titleForm {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            flex-wrap: wrap;
+
+            .text {
+                h2 {
+                    color: #544f5a;
+                    font-size: 24px;
+                    margin-bottom: 2px;
+                }
+
+                p {
+                    color: #89868d;
+                }
+            }
+
+            .buttons {
+                display: flex;
+                gap: 10px;
+                button {
+                    font-size: 17px;
+                    text-transform: uppercase;
+                    padding: 4px 20px;
+                    transition: 0.5s;
+                    font-weight: 500;
+                    border-radius: 5px;
+                    font-size: 14px;
+                    margin-top: 10px;
+                    @include sm {
+                        font-size: 17px;
+                        margin-top: 0px;
+                    }
+
+                    &:first-of-type {
+                        border: 1px solid #c5c6c9;
+                        color: #8a8d93;
+                        background: rgba(0, 0, 0, 0);
+                    }
+
+                    &:last-of-type {
+                        background-color: #9055fd;
+                        color: #f9f9f9;
+                        border: 1px solid #9055fd;
+                        box-shadow: 0px 1px 5px 0px rgba(58, 53, 65, .12);
+
+                        &:hover {
+                            color: #9055fd;
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+
+            @include lg {
+                grid-template-columns: 2.7fr 1.3fr;
+            }
+        }
+
+        .gridForm {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+
+            @include lg {
+                grid-template-columns: 2fr 2fr;
+            }
+
+            
+        }
+    }
+}
+
+.cardsImages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+
+}
+
+.css-q95an1 {
+    width: 100% !important;
+}
+
+.addImage {
+    padding: 8px 40px;
+    background-color: rgb(64, 122, 214);
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    border: 1px solid rgb(64, 122, 214);
+    font-size: 18px;
+    width: fit-content;
+    margin-left: auto;
+    display: block;
+}
+
+.form-outline {
+    margin-bottom: 10px;
+}

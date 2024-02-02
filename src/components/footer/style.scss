@@ -1,0 +1,20 @@
+@import '../../mixins.scss';
+
+.footerDash {
+    padding: 0px;
+    background-color: var(--sidebarColorMain);
+    display: flex;
+    justify-content: end;
+    padding: 15px 20px;
+    font-size: 15px;
+    .madeBy {
+        color: rgb(224, 224, 224, 0.423);
+
+        span {
+            color: rgb(224, 224, 224);
+            margin: 0px 5px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+.colorAdd {
+    display: flex;
+    gap: 10px;
+
+    .form-outline {
+        position: relative;
+
+        input {
+            border-right: none !important;
+            border-top-right-radius: 0px !important;
+            border-bottom-right-radius: 0px !important;
+
+        }
+    }
+
+    input#color {
+        order: 1px solid #777;
+        border-left: none;
+        padding-right: 0px;
+        padding: 0px;
+        height: 35px;
+        width: 70px;
+    }
+
+}
