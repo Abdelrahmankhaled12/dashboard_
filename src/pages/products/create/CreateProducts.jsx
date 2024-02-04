@@ -99,7 +99,6 @@ const CreateProducts = () => {
                                 cards={cards}
                                 setCards={(value) => setCards(value)}
                             />
-                            <Colors />
                         </form>
                     </div>
                 </BodyContent>

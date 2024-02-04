@@ -1,27 +1,87 @@
 @import '../../mixins.scss';
 
-.headerDashboard {
-    background-color: rgb(27, 38, 53);
+header {
     position: sticky;
-    z-index: 1100;
+    transform: translateY(0);
+    width: 100%;
+    z-index: 1;
+    transition: all ease 0.5s;
+    z-index: 2;
     top: 0;
 
-    .flex {
-        justify-content: space-between;
-        align-items: center;
+    &.top {
+        background: transparent;
+        backdrop-filter: blur(3.5px);
+        -webkit-backdrop-filter: blur(3.5px);
+    }
 
-        .menuDash {
-            background-color: transparent;
-            color: white;
-            border: none;
-            cursor: pointer;
-            opacity: 1;
-            svg {
-                font-size: 35px;
+    &.show {
+        background-color: rgba(255, 255, 255) !important;
+        box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, .42);
+        padding: 0.8rem 1.25rem 0.5rem;
+        border-bottom-right-radius: 0.625rem;
+        border-bottom-left-radius: 0.625rem;
+        transition: padding .2s ease, background-color .18s ease;
+    }
+
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+
+        .icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+
+            .profile {
+                position: relative;
+
+                img {
+                    width: 40px;
+                    border-radius: 50%;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    background-color: rgb(3, 236, 3);
+                    width: 9px;
+                    height: 9px;
+                    border-radius: 50%;
+                    bottom: 0;
+                    right: 0;
+                }
             }
-            @include md {
-                opacity: 0;
+
+            .language {
+                svg {
+                    font-size: 28px;
+                }
+            }
+
+            .notifications {
+                svg {
+                    font-size: 28px;
+                }
+            }
+        }
+
+        .seacrh {
+            display: flex;
+            align-items: center;
+            input {
+                background-color: transparent !important;
+                padding: 4px 10px;
+                width: 240px;
+                outline: none;
+                border: none;
+                &::placeholder {
+                    color: #77777760;
+                    font-size: 17px;
+                }
             }
         }
     }
+
 }

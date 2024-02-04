@@ -1,0 +1,19 @@
+.imageInputFile {
+    .div {
+        .text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+            h2 {
+                margin: 0;
+            }
+            p {
+                color: var(--primary);
+                font-size: 20px;
+                font-weight: 500;
+                cursor: pointer;
+            }
+        }
+    }
+}

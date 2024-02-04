@@ -139,11 +139,12 @@ const TableProducts = ({ data }) => {
                         <TableBody>
                             {table.getRowModel().rows.map((row) => (
                                 <TableRow key={row.id} selected={row.getIsSelected()}>
-                                    {row.getVisibleCells().map((cell) => (
+                                    {row.getVisibleCells().map((cell) => {
+                                        return (
                                         <TableCell align="center" variant="body" key={cell.id}>
                                             <MRT_TableBodyCellValue cell={cell} table={table} />
                                         </TableCell>
-                                    ))}
+                                    )})}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -167,7 +168,7 @@ const TableProducts = ({ data }) => {
                             }
                         }
 
-                        onClick={() => Delete_category(table.getSelectedRowModel().rows.map(ele => ele.original))}
+                        // onClick={() => Delete_category(table.getSelectedRowModel().rows.map(ele => ele.original))}
                     >
                         <FontAwesomeIcon icon={faTrashCan} />
                     </button>

@@ -1,11 +1,13 @@
 import './style.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
-const FooterDash = () => {
+const Footer = () => {
     return (
-        <footer className='footerDash'>
+        <footer>
             <div className="flex">
                 <div className='madeBy'>
-                    Made By
+                    © 2024, made with <FontAwesomeIcon icon={faHeart} /> by
                     <span>Abdelrahman</span>
                     &
                     <span>Shehab</span>
@@ -15,4 +17,4 @@ const FooterDash = () => {
     )
 }
 
-export default FooterDash
+export default Footer

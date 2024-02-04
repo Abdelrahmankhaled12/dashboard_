@@ -35,8 +35,6 @@ const AddCategory = ({ isOpen, closeModal, data }) => {
       if (!checkSendApi) {
         //  Send Category To Api 
         Add_categoryAPi(categoryName)
-        // Clear Input
-        setCatgeroyName("")
       }
     }
   }

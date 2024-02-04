@@ -21,7 +21,7 @@ const UpdateCategory = ({ isOpen, closeModal , value }) => {
                 <div className="content">
                     <div>
                         <div className="top">
-                            <h2>Add Category</h2>
+                            <h2>Update Category</h2>
                             <button onClick={() => closeModal()}><FontAwesomeIcon icon={faXmark} /></button>
                         </div>
                         <div className="box">

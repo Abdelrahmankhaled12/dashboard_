@@ -1,6 +1,13 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
+import './style.scss'
+import Cards from './cardImages/Cards';
 
-const ImageUploader = () => {
+const ImageUploader = ({ setImageFile }) => {
+
+    const [cards, setCards] = useState([])
+
+
     const [isDragging, setIsDragging] = useState(false);
 
     const handleDragEnter = (e) => {
@@ -23,28 +30,73 @@ const ImageUploader = () => {
 
         const files = e.dataTransfer.files;
         // Handle the dropped files (e.g., upload or preview)
-        console.log(files);
+        handleFileChange(files)
+    };
+
+
+    const handleFileChange = (files) => {
+        const fileSizeKB = files[0].size / 1024
+
+        setImageFile(files[0])
+
+        // Make sure files were selected
+        if (files.length > 0) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                // Update state inside the onload function
+                setCards((prevCards) => [
+                    ...prevCards,
+                    {
+                        id: prevCards.length + 1,
+                        img: e.target.result, // Set img with the loaded data
+                        name: files[0].name,
+                        size: fileSizeKB.toFixed(2)
+                    },
+                ]);
+            };
+            // Read the first selected image file as a data URL
+            reader.readAsDataURL(files[0]);
+        }
     };
 
     return (
         <div
-            className={`drop-zone ${isDragging ? 'drag-over' : ''}`}
+            className={`drop-zone ${cards.length === 0 ? "uploadImage_content" : "uploadImage_cards"} ${isDragging ? 'drag-over' : ''}`}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
         >
-            <p>Drag and drop your image here</p>
+            {
+                cards.length === 0 ? (
+                    <div className='content'
+                        onClick={() => document.getElementById("imgInput").click()}
+                    >
+                        <p>Drag and drop your image here</p>
+                        <span>Or</span>
+                        <button type='button'>Browse image</button>
+                    </div>
+                ) : (
+                    <>
+                        <div className="images">
+                            <Cards cards={cards} setCards={value => setCards(value)} />
+                        </div>
+                        <div
+                            className="" style={{ flex: "1" }}
+                            onClick={() => document.getElementById("imgInput").click()}
+                        >
+                        </div>
+                    </>
+
+                )
+            }
             <input
                 type="file"
                 accept="image/*"
-                onChange={(e) => {
-                    const files = e.target.files;
-                    // Handle the selected files (e.g., upload or preview)
-                    console.log(files);
-                }}
+                onChange={(e)=> handleFileChange(e.target.files)}
+                id='imgInput'
             />
-        </div>
+        </div >
     );
 };
 

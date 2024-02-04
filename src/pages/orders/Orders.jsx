@@ -1,9 +1,6 @@
 import SideBar from '../../components/sidebar/SideBar'
-import useFetch from '../../../hooks/useFetch';
 
 const Orders = () => {
-
-    const { data, } = useFetch("admin/all_orders");
 
     return (
         <div className='flex'>

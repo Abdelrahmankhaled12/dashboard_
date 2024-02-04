@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap");
-
+@import './mixins.scss';
 :root {
   --primary: #9055fd;
   --primary-light: rgba(177, 30, 34, 0.7);
@@ -48,16 +48,20 @@ ul {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #88888887;
+    background-color: var(--primary);
     border-radius: 6px;
   }
 
   &::-webkit-scrollbar-track {
-    background-color: var(--sidebarColorMain);
+    background-color: transparent;
   }
 
   .children {
-    padding: 10px 30px;
+    padding: 10px;
+    @include sm {
+      padding: 10px 30px;
+
+    }
   }
 
 }

@@ -2,15 +2,14 @@
 
 .sidebar {
     width: 220px;
-    background-color: var(--sidebarColorMain);
+    background-color: #282a42 !important;
     height: 100vh;
-    display: flex;
     justify-content: space-between;
     flex-direction: column;
     display: none;
 
     @include md {
-        display: block;
+        display: flex;
     }
 
     .logo {
@@ -20,34 +19,35 @@
 
     ul {
         &::-webkit-scrollbar {
-            width: 7px;
+            width: 4px;
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: #88888887;
+            background-color: #bdbdbdce;
             border-radius: 6px;
         }
 
         &::-webkit-scrollbar-track {
-            background-color: var(--sidebarColorMain);
+            background-color: #282a42 !important;
         }
 
-        height: 70vh;
+        height: 60vh;
         overflow-y: auto;
 
         li {
             display: flex;
             align-items: center;
-            color: rgb(238, 238, 238);
+            color: #d1d1e7;
             font-size: 1rem;
             padding: 9px 16px;
             border-radius: 6px;
             list-style: none;
             cursor: pointer;
             transition: 0.5s;
-
+            width: 90%;
+            transition: 0.3s;
             svg {
-                color: rgb(238, 238, 238);
+                color: #d1d1e7;
                 opacity: 0.5;
             }
 
@@ -58,7 +58,12 @@
 
         li.active {
             color: #FFFFFF;
-            background-color: rgba(164, 164, 164, 0.134);
+            background: linear-gradient(270deg, #9055fd 0%, #c4a5fe 100%);
+            border-radius: 0 50rem 50rem 0;
+            svg {
+                color: #FFFFFF;
+                opacity: 0.5;
+            }
         }
     }
 

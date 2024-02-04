@@ -2,12 +2,14 @@
 import { useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import './style.scss'
+import Loading from '../loading/Loading';
+
 
 const ItemTypes = {
     CARD: 'card',
 }
 
-const Card = ({ id, img, index, moveCard }) => {
+const Card = ({ id, img, index, moveCard , name , size }) => {
     const ref = useRef(null);
     const [{ handlerId }, drop] = useDrop({
         accept: ItemTypes.CARD,
@@ -59,8 +61,24 @@ const Card = ({ id, img, index, moveCard }) => {
     drag(drop(ref));
 
     return (
-        <div ref={ref} style={{opacity }} data-handler-id={handlerId} className='cardImage'>
-            <img src={img} alt="" />
+        <div ref={ref} style={{ opacity }} data-handler-id={handlerId} className='cardImage'>
+            <div className="element">
+                <div className="image">
+                    <div className="img">
+                        <img width={220} height={150} src={img} alt="" />
+                        <div className="loading">
+                            <Loading />
+                        </div>
+                    </div>
+                    <div className="text">
+                        <p>
+                            {name}
+                        </p>
+                        <span>{size}KB</span>
+                    </div>
+                    <button>Remove file</button>
+                </div>
+            </div>
         </div>
     );
 };

@@ -1,17 +1,18 @@
 @import '../../mixins.scss';
 
-.footerDash {
+footer {
     padding: 0px;
-    background-color: var(--sidebarColorMain);
     display: flex;
     justify-content: end;
     padding: 15px 20px;
     font-size: 15px;
     .madeBy {
-        color: rgb(224, 224, 224, 0.423);
-
+        color: rgba(7, 7, 7, 0.423);
+        svg {
+            color: red;
+        }
         span {
-            color: rgb(224, 224, 224);
+            color: var(--primary);
             margin: 0px 5px;
             font-weight: 500;
             cursor: pointer;

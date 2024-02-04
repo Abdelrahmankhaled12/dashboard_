@@ -11,7 +11,7 @@ const ADD_PRODUCT = KEY + "api/products"
 
 const ADD_CATEGORY = 'http://127.0.0.1:8000/api/categories';
 
-const DELETE_CATEGORY = 'api/categories/';
+const DELETE_CATEGORY =  KEY + 'api/categories/';
 
 
 const DELTE_PRODUCT = `http://127.0.0.1:8000/api/admin/delete_product`;
@@ -88,6 +88,7 @@ export const Add_categoryAPi = (category) => {
 
 
 export const Delete_category = (categories) => {
+    console.log(categories)
 
     Swal.fire({
         title: "Are you sure?",

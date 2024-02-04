@@ -1,14 +1,10 @@
 import './style.scss'
-import logo from '../../assets/logo.avif'
+import logo from '../../assets/logo.png'
 import { useNavigate, useLocation } from 'react-router-dom'
-import ButtonList from './buttonList/ButtonList'
 import TuneIcon from '@mui/icons-material/Tune';
-import CreditCardIcon from '@mui/icons-material/CreditCard';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import GroupsIcon from '@mui/icons-material/Groups';
 import CategoryIcon from '@mui/icons-material/Category';
-import ChecklistIcon from '@mui/icons-material/Checklist';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
@@ -16,7 +12,10 @@ const SideBar = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const path = location.pathname.split("/")[2];
+    const path = useLocation();
+    console.log(path.pathname)
+
+
 
     return (
         <div className="sidebar">
@@ -25,74 +24,43 @@ const SideBar = () => {
                     <img src={logo} alt="logo" />
                 </div>
                 <ul>
-                    <ButtonList openButton={false} buttonNameText="Dashboard" list={[
-                        {
-                            link: "default",
-                            router: "/"
-                        },
-                        {
-                            link: "SaaS",
-                            router: "/SaaS"
-                        },
-                    ]}>
-                        <TuneIcon />
-                    </ButtonList>
-                    <ButtonList openButton={false} buttonNameText="Products" list={[
-                        {
-                            link: "List",
-                            router: "/products"
-                        },
-                        {
-                            link: "Create",
-                            router: "/products/create"
-                        },
-                    ]}>
-                        <BusinessCenterIcon />
-                    </ButtonList>
-                    <li onClick={() => navigate("/categories")}>
+                    <li className={path.pathname === "/" ? "active" : ""} onClick={() => navigate("/")}>
+                        <ListItemIcon>
+                            <TuneIcon />
+                        </ListItemIcon>
+                        Dashboard
+                    </li>
+                    <li className={path.pathname === "/products" ? "active" : ""} onClick={() => navigate("/products")}>
+                        <ListItemIcon>
+                            <BusinessCenterIcon />
+                        </ListItemIcon>
+                        Products List
+                    </li>
+                    <li className={path.pathname === "/products/create" ? "active" : ""} onClick={() => navigate("/products/create")}>
+                        <ListItemIcon>
+                            <BusinessCenterIcon />
+                        </ListItemIcon>
+                        Add Product
+                    </li>
+                    <li className={path.pathname === "/categories" ? "active" : ""} onClick={() => navigate("/categories")}>
                         <ListItemIcon>
                             <CategoryIcon />
                         </ListItemIcon>
                         Categories
                     </li>
-                    <ButtonList openButton={false} buttonNameText="Invoices" list={[
-                        {
-                            link: "List",
-                            router: "/Admin/categories"
-                        },
-                        {
-                            link: "Details",
-                            router: "/Admin/categories"
-                        },
-                    ]}>
-                        <CreditCardIcon />
-                    </ButtonList>
-
-                    <li>
+                    <li className={path.pathname === "/orders" ? "active" : ""} onClick={() => navigate("/orders")}>
                         <ListItemIcon>
                             <LocalGroceryStoreIcon />
                         </ListItemIcon>
                         Orders
                     </li>
-                    <li>
-                        <ListItemIcon>
-                            <ChecklistIcon />
-                        </ListItemIcon>
-                        Tasks
-                    </li>
-                    <li>
+                    <li className={path.pathname === "/customers" ? "active" : ""} onClick={() => navigate("/customers")}> 
                         <ListItemIcon>
                             <GroupsIcon />
                         </ListItemIcon>
                         Customers
                     </li>
-                    <li>
-                        <ListItemIcon>
-                            <CalendarMonthIcon />
-                        </ListItemIcon>
-                        Calender
-                    </li>
-                    <li onClick={() => navigate("/promocode")}>
+                    <li className={path.pathname === "/promocode" ? "active" : ""} onClick={() => navigate("/promocode")}>
                         <ListItemIcon>
                             <CelebrationIcon />
                         </ListItemIcon>
@@ -101,7 +69,7 @@ const SideBar = () => {
                 </ul>
             </div>
             <p>E-commerce</p>
-        </div>
+        </div >
     )
 }
 
