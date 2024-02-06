@@ -39,7 +39,7 @@ const columns = [
         header: 'TOTAL PRODUCTS',
     },
     {
-        accessorKey: 'num_of_products',
+        accessorKey: 'earning',
         header: 'TOTAL EARNING',
     },
 ];

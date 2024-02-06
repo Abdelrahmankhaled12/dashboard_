@@ -68,7 +68,7 @@ header {
         }
 
         .seacrh {
-            display: flex;
+            display: none;
             align-items: center;
             input {
                 background-color: transparent !important;
@@ -80,6 +80,22 @@ header {
                     color: #77777760;
                     font-size: 17px;
                 }
+            }
+            @include md {
+                display: flex;
+            }
+        }
+        .sideBar {
+            display: block;
+            background-color: transparent;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            svg {
+                font-size: 35px;
+            }
+            @include md {
+                display: none;
             }
         }
     }

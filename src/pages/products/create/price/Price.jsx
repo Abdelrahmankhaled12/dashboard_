@@ -1,42 +1,64 @@
 /* eslint-disable react/prop-types */
 import { MDBInput } from 'mdb-react-ui-kit';
 import Notes from '../../../../components/notes/Notes';
+import dayjs from 'dayjs';
+import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
-const Price = ({ product_priceOld, product_priceNew, setProduct_priceOld, setProduct_priceNew, error }) => {
+const Price = ({ price, setPrice, error, discount, setDiscount , setDate }) => {
     return (
         <div className="div">
             <h2>Pricing</h2>
             <div className="form">
                 <MDBInput
-                    label='Old price'
-                    id='Old_price'
+                    label='price'
+                    id='price'
                     type='number'
-                    className={product_priceOld === 0 ? "empty" : ""}
-                    onChange={(e) => setProduct_priceOld(e.target.value)}
+                    className={price === 0 ? "empty" : ""}
+                    onChange={(e) => setPrice(e.target.value)}
                     min={1}
-                    required
                     placeholder='$150'
+                    required
                 />
-                {error[0] && (
-                    <p className='error'>Please Enter Old Price</p>
+                {error && (
+                    <p className='error'>Please Enter Price</p>
                 )}
+            </div>
+            <h2>Discount</h2>
+            <div className="form">
                 <MDBInput
-                    label='New price'
-                    id='New_price'
+                    label='Discount'
+                    id='price'
                     type='number'
-                    className={product_priceNew === 0 ? "empty" : ""}
-                    onChange={(e) => setProduct_priceNew(e.target.value)}
+                    className={discount === 0 ? "empty" : ""}
+                    onChange={(e) => setDiscount(e.target.value)}
                     min={1}
-                    placeholder='$150'
-                    required
+                    placeholder='$50'
                 />
-                {error[1] && (
-                    <p className='error'>Please Enter New Price</p>
-                )}
+            </div>
+            <div className="date">
+                <LocalizationProvider dateAdapter={AdapterDayjs}  >
+                    <DemoContainer
+                        components={[
+                            'MobileDatePicker',
+                        ]}
+                    >
+                        <DemoItem label="Deadline">
+                            <MobileDatePicker
+                                defaultValue={dayjs(new Date())}
+                                className='inputDate'
+                                onChange={e => setDate(e.$d.toISOString())}
+                            />
+                        </DemoItem>
+                    </DemoContainer>
+                </LocalizationProvider>
             </div>
             <Notes
                 text={[
-                    "In the event that there is no discount on the product, the old price and new price will be entered with the same value, and it will automatically appear to the user that there is no discount on this product."
+                    "Discount (optional)",
+                    "If there is a discount on the product and it has an expiration date, you must choose a date in the event that no expiry date is always chosen."
                 ]}
             />
         </div>

@@ -21,12 +21,9 @@ import {
 import { jsPDF } from 'jspdf'; //or use your library of choice here
 import autoTable from 'jspdf-autotable';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import './style.scss'
 import AddPromoCode from '../addPromoCode/AddPromoCode';
 import { useState } from 'react';
-import { DeletePromoCode } from '../../../utils/api';
 
 
 const columns = [
@@ -143,18 +140,6 @@ const TablePromoCode = ({ data }) => {
                     className="footerTableBox"
                 >
                     <MRT_TablePagination table={table} />
-                    <button
-                        className='remove'
-                        style={
-                            {
-                                "opacity": `${table.getSelectedRowModel().rows.length > 0 ? "1" : "0"}`,
-                                "pointerEvents": `${table.getSelectedRowModel().rows.length > 0 ? "auto" : "none"}`
-                            }
-                        }
-                        onClick={() => DeletePromoCode(table.getSelectedRowModel().rows.map(ele => ele.original))}
-                    >
-                        <FontAwesomeIcon icon={faTrashCan} />
-                    </button>
                 </Box>
                 <MRT_ToolbarAlertBanner stackAlertBanner table={table} />
             </Stack>

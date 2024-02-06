@@ -1,0 +1,48 @@
+.CellCustomer {
+    display: flex;
+    gap: 10px;
+
+    p {
+        text-align: start;
+        color: #000;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    span {
+        color: #777777be;
+        font-size: 13px;
+        text-align: start;
+        display: block;
+    }
+}
+
+.cellCustomerID {
+    color: var(--primary);
+    font-weight: 500;
+    text-align: center;
+    display: block;
+}
+
+
+.cellOrderPayment,
+.cellCutomerSpend,
+.cellCustomerPhone{
+    p {
+        font-size: 17px;
+        color: #777777b2;
+        font-weight: 500;
+    }
+}
+
+.cellCustomerAddress {
+    max-width: 250px;
+    text-align: start;
+    p {
+        strong {
+            color: #000;
+        }
+        margin: 1px 0px;
+        color: #777777b2;
+    }
+}

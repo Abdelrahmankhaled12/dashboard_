@@ -25,7 +25,7 @@ function App() {
               <Route path="/categories" element={<Categories />} />
               <Route path="/promocode" element={<PromoCode />} />
               <Route path="/orders" element={<Orders />} />
-              <Route path="/customers" element={<PromoCode />} />
+              <Route path="/customers" element={<Customers />} />
 
             </Routes>
           </div>

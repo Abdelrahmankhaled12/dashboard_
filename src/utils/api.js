@@ -11,7 +11,7 @@ const ADD_PRODUCT = KEY + "api/products"
 
 const ADD_CATEGORY = 'http://127.0.0.1:8000/api/categories';
 
-const DELETE_CATEGORY =  KEY + 'api/categories/';
+const DELETE_CATEGORY = KEY + 'api/categories/';
 
 
 const DELTE_PRODUCT = `http://127.0.0.1:8000/api/admin/delete_product`;
@@ -21,6 +21,8 @@ const DELETE_PROMOCODE = KEY + "api/promocodes/"
 
 
 const ADD_OFFERS = 'http://127.0.0.1:8000/api/promocodes';
+
+const UPDATE_CATEGORY = 'http://127.0.0.1:8000/api/categories/';
 
 
 
@@ -35,7 +37,7 @@ export const fetchDataFromApi = async (url) => {
 }
 
 
-export const Add_Product = (name, description, barcode , priceOld, priceNew, stock, category, image, colors) => {
+export const Add_Product = (name, description, barcode, priceOld, priceNew, stock, category, image, colors) => {
     console.log(image)
     console.log(colors)
 
@@ -88,8 +90,6 @@ export const Add_categoryAPi = (category) => {
 
 
 export const Delete_category = (categories) => {
-    console.log(categories)
-
     Swal.fire({
         title: "Are you sure?",
         text: `All of the following categories will be deleted ${categories.map(ele => ele.category_name).join(" | ")}`,
@@ -140,6 +140,57 @@ export const Delete_category = (categories) => {
 }
 
 
+export const Update_category = (categories , categoryName) => {
+    const data = {
+        title:categoryName
+    }
+    Swal.fire({
+
+        title: "Are you sure?",
+        text: `All of the following categories will be deleted`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete them"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(UPDATE_CATEGORY + categories, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Handle success
+                    console.log('Delete successful:', data);
+                })
+                .catch(error => {
+                    // Handle error
+                    console.error('Error deleting category:', error);
+                });
+
+
+            Swal.fire({
+                title: "Deleted!",
+                text: `All the following categories have been deleted successfully`,
+                icon: "success"
+            }).then((result) => {
+            })
+        }
+    });
+}
+
+
+
 export const DeletePromoCode = (promoCode) => {
 
     Swal.fire({
@@ -174,7 +225,7 @@ export const DeletePromoCode = (promoCode) => {
                         console.error('Error deleting category:', error);
                     });
             })
-            
+
             Swal.fire({
                 title: "Deleted!",
                 text: `All the following categories have been deleted successfully : ${promoCode.map(ele => ele.promocode).join(" | ")}`,

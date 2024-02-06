@@ -4,6 +4,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { MDBInput } from 'mdb-react-ui-kit';
 import { useState , useEffect  } from 'react';
+import { Update_category } from '../../../utils/api';
 
 const UpdateCategory = ({ isOpen, closeModal , value }) => {
 
@@ -25,7 +26,7 @@ const UpdateCategory = ({ isOpen, closeModal , value }) => {
                             <button onClick={() => closeModal()}><FontAwesomeIcon icon={faXmark} /></button>
                         </div>
                         <div className="box">
-                            <form action="">
+                            <form action="" onSubmit={(e)=> e.preventDefault() }>
                                 <MDBInput
                                     label='Category Name'
                                     id='Category Name'
@@ -38,7 +39,7 @@ const UpdateCategory = ({ isOpen, closeModal , value }) => {
                                 />
                                 <div className="buttons">
                                     <button type="button">discard</button>
-                                    <button type="sumbit">update category</button>
+                                    <button type="sumbit" onClick={()=>Update_category(value.category_id , categoryName )}>update category</button>
                                 </div>
                             </form>
                         </div>

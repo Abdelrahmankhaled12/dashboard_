@@ -10,19 +10,24 @@ import ProductInformation from "./product_infromation/ProductInformation";
 import Price from "./price/Price";
 import Category from "./category/Category";
 import Image from './image/Image'
+import Size from "./size/Size";
 
 
 const CreateProducts = () => {
-    const [product_name, setProduct_name] = useState("")
-    const [product_barCode, setBarCode] = useState("")
+    const [name, setName] = useState("")
+    const [barCode, setBarCode] = useState("")
 
-    const [product_priceOld, setProduct_priceOld] = useState(0)
-    const [product_priceNew, setProduct_priceNew] = useState(0)
-    const [product_stock, setProduct_stock] = useState(0)
-    const [product_description, setProduct_description] = useState("")
-    const [product_category, setProduct_category] = useState("")
+    const [colors , setColors] = useState([])
+
+    const [price, setPrice] = useState(0)
+    const [discount, setDiscount] = useState(0)
+    const [date, setDate] = useState("")
+    const [stock, setStock] = useState(0)
+    const [description, setDescription] = useState("")
+    const [category, setCategory] = useState("")
     const [checkErrors, setCheckErrors] = useState([false, false, false, false, false, false])
     const [cards, setCards] = useState([])
+    const [ size, setSize ] = useState([])
 
     const formSumbit = () => {
         let checkSendDateToApi = true;
@@ -51,6 +56,8 @@ const CreateProducts = () => {
 
     const { data, loading, } = useFetch("categories");
 
+    console.log(date)
+
     return (
         <>
             {data && (
@@ -70,23 +77,24 @@ const CreateProducts = () => {
                             </div>
                             <div className="grid">
                                 <ProductInformation
-                                    product_name={product_name}
-                                    product_stock={product_stock}
-                                    product_description={product_description}
-                                    product_barCode={product_barCode}
+                                    name={name}
+                                    stock={stock}
+                                    description={description}
+                                    barCode={barCode}
                                     setBarCode={(value) => setBarCode(value)}
-                                    setProduct_name={(value) => setProduct_name(value)}
-                                    setProduct_stock={(value) => setProduct_stock(value)}
-                                    setProduct_description={(value) => setProduct_description(value)}
+                                    setName={(value) => setName(value)}
+                                    setStock={(value) => setStock(value)}
+                                    setDescription={(value) => setDescription(value)}
                                     error={[checkErrors[0], checkErrors[1], checkErrors[2]]}
                                 />
                                 <div>
                                     <Price
-                                        product_priceOld={product_priceOld}
-                                        product_priceNew={product_priceNew}
-                                        setProduct_priceOld={(value) => setProduct_priceOld(value)}
-                                        setProduct_priceNew={(value) => setProduct_priceNew(value)}
-                                        error={[checkErrors[3], checkErrors[4]]}
+                                        price={price}
+                                        setPrice={(value) => setPrice(value)}
+                                        error={checkErrors[4]}
+                                        discount={discount}
+                                        setDiscount={(value) => setDiscount(value)}
+                                        setDate={(value) => setDate(value)}
                                     />
                                     <Category
                                         data={data?.data}
@@ -99,6 +107,10 @@ const CreateProducts = () => {
                                 cards={cards}
                                 setCards={(value) => setCards(value)}
                             />
+                            <div className="grid">
+                                <Colors setColor={value=>setColors(value)} colors={colors} />
+                                <Size sizes={size} setSize={(value) => setSize(value)}/>
+                            </div>
                         </form>
                     </div>
                 </BodyContent>
