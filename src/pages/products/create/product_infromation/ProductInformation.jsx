@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
-
 import Editor from "./editor/Editor"
 import { MDBInput } from 'mdb-react-ui-kit';
 import Notes from '../../../../components/notes/Notes'
 
-const ProductInformation = ({ name, setName, stock, barCode, setBarCode, setStock, description, setDescription, error }) => {
+const ProductInformation = ({ name, setName, stock, barCode, setBarCode, setStock, description, setDescription }) => {
     return (
         <div className="productInfo">
             <div className="div">
@@ -18,10 +17,8 @@ const ProductInformation = ({ name, setName, stock, barCode, setBarCode, setStoc
                         onChange={(e) => setName(e.target.value)}
                         required
                         placeholder="e.g. Apple Macbook Retina"
+                        value={name}
                     />
-                    {error[0] && (
-                        <p className='error'>Please Enter That The Product Name</p>
-                    )}
                     <div className="gridForm">
                         <MDBInput
                             label='Stock'
@@ -40,21 +37,16 @@ const ProductInformation = ({ name, setName, stock, barCode, setBarCode, setStoc
                             className={barCode === "" ? "empty" : ""}
                             onChange={(e) => setBarCode(e.target.value)}
                             placeholder="0123-456"
+                            required
+                            value={barCode}
                         />
                     </div>
-                    {error[2] && (
-                        <p className='error'>Please Enter Stock</p>
-                    )}
                     <Notes
                         text={[
-                            "Barcode (optional)",
                             "If the stock is zero, the product will appear to the user normally, but it will appear that it is currently unavailable"
                         ]}
                     />
                     <Editor value_des={description} setDesValue={(value) => setDescription(value)} />
-                    {error[1] && (
-                        <p className='error'>Please Enter The Description Of The Product</p>
-                    )}
                 </div>
             </div>
         </div>

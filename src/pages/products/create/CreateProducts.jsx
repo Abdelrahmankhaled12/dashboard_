@@ -26,37 +26,37 @@ const CreateProducts = () => {
     const [description, setDescription] = useState("")
     const [category, setCategory] = useState("")
     const [checkErrors, setCheckErrors] = useState([false, false, false, false, false, false])
-    const [cards, setCards] = useState([])
+    const [images, setImages] = useState([])
     const [ size, setSize ] = useState([])
 
     const formSumbit = () => {
         let checkSendDateToApi = true;
         let check = [];
-        product_name.length < 6 ? check.push(true) : check.push(false);
-        product_description === "" ? check.push(true) : check.push(false);
-        product_stock === 0 ? check.push(true) : check.push(false);
-        product_priceOld === 0 ? check.push(true) : check.push(false);
-        product_priceNew === 0 ? check.push(true) : check.push(false);
-        product_category === "" ? check.push(true) : check.push(false);
 
+        name.length < 6 ? check.push(true) : check.push(false);
+        description === "" ? check.push(true) : check.push(false);
+        stock === 0 ? check.push(true) : check.push(false);
+        barCode === "" ? check.push(true) : check.push(false);
 
         Add_Product(
-            product_name,
-            product_description,
-            product_barCode,
-            product_priceOld,
-            product_priceNew,
-            product_stock,
-            product_category,
-            cards,
-            []
+            name,
+            description,
+            barCode,
+            price,
+            discount,
+            date,
+            category,
+            images,
+            colors,
+            size
         )
 
     }
 
+    console.log(images)
+
     const { data, loading, } = useFetch("categories");
 
-    console.log(date)
 
     return (
         <>
@@ -85,7 +85,7 @@ const CreateProducts = () => {
                                     setName={(value) => setName(value)}
                                     setStock={(value) => setStock(value)}
                                     setDescription={(value) => setDescription(value)}
-                                    error={[checkErrors[0], checkErrors[1], checkErrors[2]]}
+                                    error={[checkErrors[0], checkErrors[1], checkErrors[2] , checkErrors[3]]}
                                 />
                                 <div>
                                     <Price
@@ -98,14 +98,14 @@ const CreateProducts = () => {
                                     />
                                     <Category
                                         data={data?.data}
-                                        setProduct_category={(value) => setProduct_category(value)}
+                                        setCategory={(value) => setCategory(value)}
                                         error={[checkErrors[5]]}
                                     />
                                 </div>
                             </div>
                             <Image
-                                cards={cards}
-                                setCards={(value) => setCards(value)}
+                                images={images}
+                                setImages={(value) => setImages(value)}
                             />
                             <div className="grid">
                                 <Colors setColor={value=>setColors(value)} colors={colors} />

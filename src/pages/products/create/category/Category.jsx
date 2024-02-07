@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 
-import MultipleSelectChip from "./SelectCategory"
+import SelectCategory from "./SelectCategory"
 
-const Category = ({ data, setProduct_category , error }) => {
+const Category = ({ data, setCategory , error }) => {
     return (
         <div className="div">
             <h2>Category</h2>
             <div className="form">
-                <MultipleSelectChip names={data} />
+                <SelectCategory categories={data} setCategory={(value) => setCategory(value)} />
             </div>
             {error[0] && (
                 <p className='error'>Please choose the category type for this product</p>

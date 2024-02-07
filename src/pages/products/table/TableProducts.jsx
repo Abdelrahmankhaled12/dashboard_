@@ -25,9 +25,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import './style.scss'
 import { useNavigate } from 'react-router-dom';
+import CellProductBarCode from './cells/CellProductBarCode';
+import CellProduct from './cells/CellProduct';
+import CellProductCategory from './cells/CellProductCategory';
+import CellProductPrice from './cells/CellProductPrice';
+import CellProductStock from './cells/CellProductStock';
 
 
 const columns = [
+    {
+        accessorKey: 'product_id',
+        header: 'BARCODE',
+    },
     {
         accessorKey: 'product_name',
         header: 'PRODUCT',
@@ -37,16 +46,12 @@ const columns = [
         header: 'CATEGORY',
     },
     {
-        accessorKey: 'discount',
-        header: 'NEW PRICE',
+        accessorKey: 'stock',
+        header: 'STOCK',
     },
     {
         accessorKey: 'price',
-        header: 'OLD PRICE',
-    },
-    {
-        accessorKey: 'stock',
-        header: 'STOCK',
+        header: 'PRICE',
     },
 ];
 
@@ -75,10 +80,10 @@ const TableProducts = ({ data }) => {
     // Download Pdf
     const handleExportRows = (rows) => {
         const doc = new jsPDF();
-        const tableData = rows.map((row) => Object.values(row.original)).map(element => [element[1], element[3], element[5], element[7] , element[6]]);
+        const tableData = rows.map((row) => Object.values(row.original)).map(element => [element[1], element[3], element[5], element[7], element[6]]);
         const tableHeaders = columns.map((c) => c.header);
 
-        
+
 
         autoTable(doc, {
             head: [tableHeaders],
@@ -92,14 +97,7 @@ const TableProducts = ({ data }) => {
     return (
         <>
             <Stack sx={{ m: '2rem 0' }}>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                    }}
-                >
-
+                <div className='topTaple'>
                     <MRT_GlobalFilterTextField table={table} />
                     <div className='buttonsTableHeaderCategory'>
                         <Button
@@ -114,16 +112,15 @@ const TableProducts = ({ data }) => {
                             Export
                         </Button>
                         <button className="styleButton" onClick={() => navigate('/products/create')}>+ Add PRODUCT</button>
-
                     </div>
-                </Box>
+                </div>
                 <TableContainer>
                     <Table>
                         <TableHead>
                             {table.getHeaderGroups().map((headerGroup) => (
                                 <TableRow key={headerGroup.id}>
-                                    {headerGroup.headers.map((header) => (
-                                        <TableCell align="center" variant="head" key={header.id}>
+                                    {headerGroup.headers.map((header, index) => (
+                                        <TableCell align={index === 1 || index === 0 ? "center" : "left"} variant="head" key={header.id} >
                                             {header.isPlaceholder
                                                 ? null
                                                 : flexRender(
@@ -139,12 +136,49 @@ const TableProducts = ({ data }) => {
                         <TableBody>
                             {table.getRowModel().rows.map((row) => (
                                 <TableRow key={row.id} selected={row.getIsSelected()}>
-                                    {row.getVisibleCells().map((cell) => {
-                                        return (
-                                        <TableCell align="center" variant="body" key={cell.id}>
-                                            <MRT_TableBodyCellValue cell={cell} table={table} />
-                                        </TableCell>
-                                    )})}
+                                    {row.getVisibleCells().map((cell, index) => {
+                                        if (index === 0) {
+                                            return (
+                                                <TableCell align="center" variant="body" key={cell.id}>
+                                                    <MRT_TableBodyCellValue cell={cell} table={table} />
+                                                </TableCell>
+                                            )
+                                        } else if (index === 1) {
+                                            return (
+                                                <TableCell align="center" variant="body" key={cell.id}>
+                                                    <CellProductBarCode product={cell.row.original} />
+                                                </TableCell>
+                                            )
+                                        }
+                                        else if (index === 2) {
+                                            return (
+                                                <TableCell align="left" variant="body" key={cell.id}>
+                                                    <CellProduct product={cell.row.original} />
+                                                </TableCell>
+                                            )
+                                        }
+                                        else if (index === 3) {
+                                            return (
+                                                <TableCell align="center" variant="body" key={cell.id}>
+                                                    <CellProductCategory product={cell.row.original} />
+                                                </TableCell>
+                                            )
+                                        }
+                                        else if (index === 4) {
+                                            return (
+                                                <TableCell align="left" variant="body" key={cell.id}>
+                                                    <CellProductStock product={cell.row.original} />
+                                                </TableCell>
+                                            )
+                                        }
+                                        else if (index === 5) {
+                                            return (
+                                                <TableCell align="left" variant="body" key={cell.id}>
+                                                    <CellProductPrice product={cell.row.original} />
+                                                </TableCell>
+                                            )
+                                        }
+                                    })}
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -168,7 +202,7 @@ const TableProducts = ({ data }) => {
                             }
                         }
 
-                        // onClick={() => Delete_category(table.getSelectedRowModel().rows.map(ele => ele.original))}
+                    // onClick={() => Delete_category(table.getSelectedRowModel().rows.map(ele => ele.original))}
                     >
                         <FontAwesomeIcon icon={faTrashCan} />
                     </button>

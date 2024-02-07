@@ -9,8 +9,14 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import PromoCode from './pages/promocode/PromoCode'
 import Orders from './pages/orders/Orders'
 import Customers from './pages/customers/Customers'
+import useFetch from './hooks/useFetch'
+import 'sweetalert2/src/sweetalert2.scss'
 
 function App() {
+
+  const { data: promoCodes, } = useFetch("promocodes");
+  const { data: customers, } = useFetch("customers");
+  const { data:orders, } = useFetch("orders");
 
   return (
     <>
@@ -23,10 +29,9 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/products/create" element={<CreaeProducts />} />
               <Route path="/categories" element={<Categories />} />
-              <Route path="/promocode" element={<PromoCode />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/customers" element={<Customers />} />
-
+              <Route path="/promocode" element={<PromoCode data={promoCodes} />} />
+              <Route path="/orders" element={<Orders data={orders} />} />
+              <Route path="/customers" element={<Customers data={customers} />} />
             </Routes>
           </div>
         </div>

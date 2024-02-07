@@ -9,7 +9,7 @@ import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-import { addPromoCode } from '../../../utils/api';
+import { SendPromoCodeApi } from '../PromoApi';
 import RulesPromo from './RulesPromo.';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -83,10 +83,10 @@ const AddPromoCode = ({ isOpen, closeModal }) => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete them"
+        confirmButtonText: "Yes, Add"
       }).then((result) => {
         if (result.isConfirmed) {
-          addPromoCode(promoCodeName, discount, startDate, endDate)
+          SendPromoCodeApi(promoCodeName, discount, startDate, endDate)
             .then(responseData => {
               if (responseData.status === 201) {
                 Swal.fire({
@@ -109,7 +109,7 @@ const AddPromoCode = ({ isOpen, closeModal }) => {
     }
 
   }
-  
+
   return (
     <div className={isOpen ? "addCategory addCategory_active" : "addCategory"}>
       <div className="flex">
@@ -127,7 +127,7 @@ const AddPromoCode = ({ isOpen, closeModal }) => {
                   id='PromoCode_Name'
                   type='text'
                   className={promoCodeName === "" ? "empty" : ""}
-                  onChange={(e) => setPromoCodeName(e.target.value)}
+                  onChange={(e) => setPromoCodeName((e.target.value).toUpperCase())}
                   required
                   value={promoCodeName}
                 />
@@ -189,7 +189,7 @@ const AddPromoCode = ({ isOpen, closeModal }) => {
                 </div>
                 <div className="buttons">
                   <button type="button"
-                    onClick={()=> {
+                    onClick={() => {
                       setCheckStartDate(false)
                       setCheckEndDate(false)
                       setCheckPromoCode(false)

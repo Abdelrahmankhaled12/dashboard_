@@ -4,7 +4,8 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { MDBInput } from 'mdb-react-ui-kit';
 import { useState } from 'react';
-import { Add_categoryAPi } from '../../../utils/api';
+import { SendCategoryAddApi } from '../CateegoriesApi';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 const AddCategory = ({ isOpen, closeModal, data }) => {
 
@@ -34,7 +35,36 @@ const AddCategory = ({ isOpen, closeModal, data }) => {
       // Category Not Exists => Send Category To Api 
       if (!checkSendApi) {
         //  Send Category To Api 
-        Add_categoryAPi(categoryName)
+        Swal.fire({
+          title: "Are you sure?",
+          text: `A new category will be added called ${categoryName}`,
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, Add"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            SendCategoryAddApi(categoryName)
+              .then(responseData => {
+                if (responseData.status === 201) {
+                  Swal.fire({
+                    title: "Added!",
+                    text: `A new category called ${categoryName} has been added.`,
+                    icon: "success"
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      window.location.reload();
+                    }
+                  })
+                }
+              })
+              .catch(error => {
+                console.log(error)
+                setErrorSendApi(true)
+              });
+          }
+        });
       }
     }
   }
@@ -65,7 +95,7 @@ const AddCategory = ({ isOpen, closeModal, data }) => {
                   <p className='error'>This category already exists</p>
                 )}
                 <div className="buttons">
-                  <button type="button" onClick={() => setCatgeroyName("")}>discard</button>
+                  <button type="button" onClick={() => {setCatgeroyName("") , setCheck(false)}}>discard</button>
                   <button type="sumbit" onClick={() => handleClickButtonForm()}>Publish category</button>
                 </div>
               </form>

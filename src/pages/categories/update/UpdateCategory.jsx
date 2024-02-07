@@ -4,7 +4,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { MDBInput } from 'mdb-react-ui-kit';
 import { useState , useEffect  } from 'react';
-import { Update_category } from '../../../utils/api';
+import { Update_category } from '../CateegoriesApi';
 
 const UpdateCategory = ({ isOpen, closeModal , value }) => {
 
@@ -29,7 +29,7 @@ const UpdateCategory = ({ isOpen, closeModal , value }) => {
                             <form action="" onSubmit={(e)=> e.preventDefault() }>
                                 <MDBInput
                                     label='Category Name'
-                                    id='Category Name'
+                                    id='Name'
                                     type='text'
                                     className={categoryName === "" ? "empty" : ""}
                                     onChange={(e) => setCatgeroyName(e.target.value)}

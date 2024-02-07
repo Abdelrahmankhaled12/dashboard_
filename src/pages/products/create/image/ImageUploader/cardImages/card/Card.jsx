@@ -76,7 +76,7 @@ const Card = ({ id, img, index, moveCard , name , size }) => {
                         </p>
                         <span>{size}KB</span>
                     </div>
-                    <button>Remove file</button>
+                    <button type='button'>Remove file</button>
                 </div>
             </div>
         </div>

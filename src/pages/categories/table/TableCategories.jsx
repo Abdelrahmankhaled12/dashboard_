@@ -21,7 +21,7 @@ import {
 import { jsPDF } from 'jspdf'; //or use your library of choice here
 import autoTable from 'jspdf-autotable';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import { Delete_category } from '../../../utils/api';
+import { Delete_category } from '../CateegoriesApi';
 import './style.scss'
 import AddCategory from '../addCategory/AddCategory';
 import { useState } from 'react';
@@ -70,7 +70,7 @@ const TableCategories = ({ data }) => {
     // Download Pdf
     const handleExportRows = (rows) => {
         const doc = new jsPDF();
-        const tableData = rows.map((row) => Object.values(row.original)).map(element => [element[0], element[2], element[2]]);
+        const tableData = rows.map((row) => Object.values(row.original)).map(element => [element[0], element[2], element[3]]);
         const tableHeaders = columns.map((c) => c.header);
 
         autoTable(doc, {

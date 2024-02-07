@@ -2,6 +2,7 @@ import useFetch from '../../hooks/useFetch'
 import BodyContent from '../../components/bodyContent/BodyContent'
 import Title from '../../components/title/Title'
 import TableProducts from './table/TableProducts'
+import StatisticsProducts from './statistics/StatisticsProducts'
 
 const Products = () => {
 
@@ -9,11 +10,14 @@ const Products = () => {
     console.log(data)
     return (
         <>
-            { data && (
+            {data && (
                 <BodyContent>
-                    <div className="show_products">
+                    <div className="products">
                         <Title title={"Products"} />
-                        <TableProducts data={data?.data} />
+                        <StatisticsProducts data={data?.data} />
+                        <div className="show_products show_table">
+                            <TableProducts data={data?.data} />
+                        </div>
                     </div>
                 </BodyContent>
             )}

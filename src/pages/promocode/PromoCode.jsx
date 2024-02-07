@@ -1,11 +1,8 @@
-import useFetch from '../../hooks/useFetch'
 import Title from '../../components/title/Title'
 import BodyContent from '../../components/bodyContent/BodyContent';
 import TablePromoCode from './table/TablePromoCode';
 
-const PromoCode = () => {
-
-    const { data, } = useFetch("promocodes");
+const PromoCode = ({ data }) => {
 
     return (
         <>
