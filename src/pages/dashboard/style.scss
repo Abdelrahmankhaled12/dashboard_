@@ -1,0 +1,99 @@
+.dashboard {
+    padding-top: 50px;
+
+    .grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+    }
+
+    .div {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        align-items: end;
+
+        .text {
+            padding: 25px 20px;
+
+            h4 {
+                color: #000;
+            }
+
+            p {
+                color: #777777ab;
+            }
+        }
+
+        .image {
+            position: relative;
+
+            img {
+                width: 250px;
+                position: absolute;
+                bottom: 0px;
+            }
+        }
+    }
+}
+
+.boxShadow {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0.25rem 0.5rem rgba(58, 53, 65, .1) !important;
+}
+
+
+.gridTwo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+
+}
+
+rect {
+    fill: var(--primary) !important;
+
+}
+
+svg.moreVertIcon {
+    color: #777777ab !important;
+}
+
+.boxes {
+    margin-top: 20px;
+    .box {
+        padding: 15px 20px;
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            p {
+                color: #000000df;
+                text-transform: capitalize;
+                font-size: 20px;
+            }
+        }
+        h5 {
+            color: #000000d2;
+            font-size: 30px;
+        }
+        .footerBox {
+            display: flex;
+            align-items: center;
+            span {
+                background-color: rgba(14, 255, 14, 0.559);
+                color: white;
+                border-radius: 6px;
+                padding: 2px 5px;
+                font-weight: 500;
+            }
+
+            p {
+                color: #777;
+                margin-left: 8px;
+                font-size: 14px;
+            }
+        }
+    }
+}

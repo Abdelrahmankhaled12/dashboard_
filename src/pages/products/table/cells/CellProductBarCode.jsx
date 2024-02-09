@@ -3,7 +3,7 @@ import './style.scss'
 const CellProductBarCode = ({ product }) => {
     return (
         <div className='cellProductBarCode'>   
-            #{product.product_id}
+            #{product.barcode}
         </div>
     )
 }

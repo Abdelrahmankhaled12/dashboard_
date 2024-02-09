@@ -1,9 +1,9 @@
 import './style.scss'
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
-import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import { useState , useEffect } from 'react';
 import { TotalProducts , TotalProductsSold,  TotalProductsStock } from './function';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
 
 const StatisticsProducts = ({ data }) => {
 
@@ -34,7 +34,7 @@ const StatisticsProducts = ({ data }) => {
                         <span>Total Products</span>
                     </div>
                     <div className="icon">
-                        <CalendarMonthIcon />
+                        <DoneAllIcon />
                     </div>
                 </div>
                 <div className="box">
@@ -43,7 +43,7 @@ const StatisticsProducts = ({ data }) => {
                         <span>Total Sold</span>
                     </div>
                     <div className="icon">
-                        <DoneAllIcon />
+                        <DeliveryDiningIcon />
                     </div>
                 </div>
                 <div className="box">
@@ -52,7 +52,7 @@ const StatisticsProducts = ({ data }) => {
                         <span>Total Stock</span>
                     </div>
                     <div className="icon">
-                        <CurrencyExchangeIcon />
+                        <InventoryIcon />
                     </div>
                 </div>
             </div>

@@ -1,11 +1,8 @@
-import useFetch from '../../hooks/useFetch'
 import Title from '../../components/title/Title'
 import BodyContent from '../../components/bodyContent/BodyContent';
 import TableCategories from './table/TableCategories';
 import StatisticsCategories from './statistics/StatisticsCategories';
-const Categories = () => {
-
-    const { data, } = useFetch("categories");
+const Categories = ({ data }) => {
 
     return (
         <>

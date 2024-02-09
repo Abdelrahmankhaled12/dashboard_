@@ -48,7 +48,8 @@ const CreateProducts = () => {
             category,
             images,
             colors,
-            size
+            size,
+            stock
         )
 
     }

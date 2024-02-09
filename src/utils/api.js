@@ -24,7 +24,18 @@ export const fetchDataFromApi = async (url) => {
 }
 
 
-export const Add_Product = (name, description, barCode, price, discount, date, category, images, colors, size) => {
+export const Add_Product = (name,
+    description,
+    barCode,
+    price,
+    discount,
+    date,
+    category,
+    images,
+    colors,
+    size,
+    stock) => {
+
 
     const formData = new FormData();
     formData.append('title', name);
@@ -34,8 +45,19 @@ export const Add_Product = (name, description, barCode, price, discount, date, c
     formData.append('price', price);
     formData.append('stock', stock);
     formData.append('images', JSON.stringify(images));
-    formData.append('colors', JSON.stringify(colors));
     formData.append('category_id', category);
+
+    if (size.length > 0) {
+        formData.append('sizes', size);
+    }
+    if (colors.length > 0) {
+        formData.append('colors', JSON.stringify(colors));
+    }
+    
+    formData.append('deadline', date);
+
+    // formData.append('category_id', category);
+
     const xhr = new XMLHttpRequest();
     xhr.open('POST', ADD_PRODUCT, true);
     xhr.send(formData);

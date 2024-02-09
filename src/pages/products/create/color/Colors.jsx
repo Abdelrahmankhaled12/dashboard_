@@ -1,6 +1,10 @@
 import { MDBInput } from 'mdb-react-ui-kit';
 import { useState } from 'react';
 import './style.scss'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
 const Colors = ({ colors, setColor }) => {
 
     const [colorName, setColorName] = useState("");
@@ -14,6 +18,10 @@ const Colors = ({ colors, setColor }) => {
         setColorName("")
     }
 
+    const removeColor = (color) => {
+        let filter = colors.filter(ele => ele.name !== color)
+        setColor(filter)
+    }
 
     return (
         <div>
@@ -28,7 +36,7 @@ const Colors = ({ colors, setColor }) => {
                         onChange={(e) => setColorName(e.target.value)}
                         value={colorName}
                     />
-                    <div className="color">
+                    <div className="colorInput">
                         <input type="color" id='color' onChange={(e) => setColorValue(e.target.value)} />
                     </div>
                 </div>
@@ -41,7 +49,7 @@ const Colors = ({ colors, setColor }) => {
                     {colors?.map(color => (
                         <div className="color" key={color.name}>
                             <p>{color.name}</p>
-                            {/* <button type='button' onClick={() => removeSize(size)}  ><FontAwesomeIcon icon={faXmark} /></button> */}
+                            <button type='button' onClick={()=>removeColor(color.name)}  ><FontAwesomeIcon icon={faXmark} /></button>
                         </div>
                     ))}
                 </div>

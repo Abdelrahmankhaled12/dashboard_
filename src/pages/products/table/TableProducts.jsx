@@ -22,14 +22,15 @@ import { jsPDF } from 'jspdf'; //or use your library of choice here
 import autoTable from 'jspdf-autotable';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { faL, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import './style.scss'
 import { useNavigate } from 'react-router-dom';
 import CellProductBarCode from './cells/CellProductBarCode';
 import CellProduct from './cells/CellProduct';
-import CellProductCategory from './cells/CellProductCategory';
+import CellProductDiscount from './cells/CellProductDiscount';
 import CellProductPrice from './cells/CellProductPrice';
 import CellProductStock from './cells/CellProductStock';
+import CellProductDeadline from './cells/CellProductDeadline';
 
 
 const columns = [
@@ -42,10 +43,6 @@ const columns = [
         header: 'PRODUCT',
     },
     {
-        accessorKey: 'category_name',
-        header: 'CATEGORY',
-    },
-    {
         accessorKey: 'stock',
         header: 'STOCK',
     },
@@ -53,7 +50,22 @@ const columns = [
         accessorKey: 'price',
         header: 'PRICE',
     },
+    {
+        accessorKey: 'discount',
+        header: 'DISCOUNT',
+    },
+    {
+        accessorKey: 'deadline',
+        header: 'DEADLINE (discount)',
+    },
 ];
+
+const filterProductPDF = (element) => {
+    let price = element[7];
+    if (element[13] === null)
+        return [element[12], element[1], (element[7] - element[8]), (element[5] - element[6]), element[3]]
+    return [element[12], element[1], (element[7] - element[8]), element[5], element[3]]
+}
 
 const TableProducts = ({ data }) => {
 
@@ -80,9 +92,13 @@ const TableProducts = ({ data }) => {
     // Download Pdf
     const handleExportRows = (rows) => {
         const doc = new jsPDF();
-        const tableData = rows.map((row) => Object.values(row.original)).map(element => [element[1], element[3], element[5], element[7], element[6]]);
-        const tableHeaders = columns.map((c) => c.header);
+        const tableData = rows.map((row) => Object.values(row.original)).map(element => filterProductPDF(element));
+        let tableHeaders = columns.filter((c, index) => {
+            if (index <= 3)
+                return c.header
+        }).map(c => c.header);
 
+        tableHeaders.push("CATEGORY")
 
 
         autoTable(doc, {
@@ -159,22 +175,29 @@ const TableProducts = ({ data }) => {
                                         }
                                         else if (index === 3) {
                                             return (
-                                                <TableCell align="center" variant="body" key={cell.id}>
-                                                    <CellProductCategory product={cell.row.original} />
+                                                <TableCell align="left" variant="body" key={cell.id}>
+                                                    <CellProductStock product={cell.row.original} />
                                                 </TableCell>
                                             )
                                         }
                                         else if (index === 4) {
                                             return (
                                                 <TableCell align="left" variant="body" key={cell.id}>
-                                                    <CellProductStock product={cell.row.original} />
+                                                    <CellProductPrice product={cell.row.original} />
                                                 </TableCell>
                                             )
                                         }
                                         else if (index === 5) {
                                             return (
                                                 <TableCell align="left" variant="body" key={cell.id}>
-                                                    <CellProductPrice product={cell.row.original} />
+                                                    <CellProductDiscount product={cell.row.original} />
+                                                </TableCell>
+                                            )
+                                        }
+                                        else if (index === 6) {
+                                            return (
+                                                <TableCell align="left" variant="body" key={cell.id}>
+                                                    <CellProductDeadline product={cell.row.original} />
                                                 </TableCell>
                                             )
                                         }

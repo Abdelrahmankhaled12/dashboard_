@@ -85,3 +85,33 @@
         position: absolute;
     }
 }
+
+
+.timer {
+    .boxesTimer {
+        margin-top: 10px;   
+        display: flex;
+        .box {
+            margin: 0px;
+            &:first-of-type {
+                margin: 0;
+            }
+            width: fit-content;
+            .time {
+                background-color: #f7f7f7;
+                width: fit-content;
+                padding: 10px 14px;
+                border-radius: 4px;
+                font-size: 18px;
+                font-weight: 600;
+                border: 1px solid #ebebeb;
+            }
+            h6 {
+                font-size: 15px;
+                text-align: center;
+                margin-top: 8px;
+                font-weight: 500;
+            }
+        }
+    }
+}

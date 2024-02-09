@@ -37,12 +37,13 @@ const ImageUploader = ({ setImageFile }) => {
     const handleFileChange = (files) => {
         const fileSizeKB = files[0].size / 1024
 
-        setImageFile(files[0])
 
         // Make sure files were selected
         if (files.length > 0) {
             const reader = new FileReader();
             reader.onload = function (e) {
+                setImageFile(e.target.result.split(",")[1])
+
                 // Update state inside the onload function
                 setCards((prevCards) => [
                     ...prevCards,

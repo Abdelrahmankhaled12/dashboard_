@@ -25,8 +25,28 @@ export const SendCategoryAddApi = (category) => {
     });
 };
 
-export const Add_categoryAPi = (category) => {
+export const SendCategoryUpdateApi = (category) => {
 
+    return new Promise((resolve, reject) => {
+        const formData = new FormData();
+        formData.append('title', category);
+        fetch(CATEGORY_API, {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                resolve(data);
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
     Swal.fire({
         title: "Are you sure?",
         text: `A new category will be added called ${category}`,
@@ -37,7 +57,6 @@ export const Add_categoryAPi = (category) => {
         confirmButtonText: "Yes, Add it!"
     }).then((result) => {
         if (result.isConfirmed) {
-
             Swal.fire({
                 title: "Added!",
                 text: `A new category called ${category} has been added.`,

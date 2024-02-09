@@ -14,28 +14,33 @@ import 'sweetalert2/src/sweetalert2.scss'
 
 function App() {
 
-  const { data: promoCodes, } = useFetch("promocodes");
-  const { data: customers, } = useFetch("customers");
-  const { data:orders, } = useFetch("orders");
+  // const { data: promoCodes, } = useFetch("promocodes");
+  // const { data: customers, } = useFetch("customers");
+  // const { data: orders, } = useFetch("orders");
+  // const { data: categories, } = useFetch("categories");
 
   return (
     <>
-      <BrowserRouter>
-        <div className="flex">
-          <SideBar />
-          <div className='bodyContent'>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/products/create" element={<CreaeProducts />} />
-              <Route path="/categories" element={<Categories />} />
-              <Route path="/promocode" element={<PromoCode data={promoCodes} />} />
-              <Route path="/orders" element={<Orders data={orders} />} />
-              <Route path="/customers" element={<Customers data={customers} />} />
-            </Routes>
-          </div>
-        </div>
-      </BrowserRouter>
+      {
+        (true && true) && (
+          <BrowserRouter>
+            <div className="flex">
+              <SideBar />
+              <div className='bodyContent'>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/products" element={<Products />} />
+                  <Route path="/products/create" element={<CreaeProducts />} />
+                  {/* <Route path="/categories" element={<Categories data={categories} />} />
+                  <Route path="/promocode" element={<PromoCode data={promoCodes} />} />
+                  <Route path="/orders" element={<Orders data={orders} />} />
+                  <Route path="/customers" element={<Customers data={customers} />} /> */}
+                </Routes>
+              </div>
+            </div>
+          </BrowserRouter>
+        )
+      }
     </>
   )
 }

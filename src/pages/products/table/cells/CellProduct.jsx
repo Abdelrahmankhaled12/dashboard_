@@ -2,7 +2,6 @@ import './style.scss'
 
 const CellProduct = ({ product }) => {
 
-    console.log(product)
     return (
         <div className='cellProduct'>
             <div className="image">

@@ -1,0 +1,35 @@
+.totalSales {
+    display: grid;
+    grid-template-columns: 1.3fr .7fr;
+    margin: 15px 0px;
+
+    .text {
+        padding: 40px 15px;
+
+        P {
+
+            &:first-of-type {
+                color: #000000b9;
+                font-size: 20px;
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+            &:last-of-type {
+                color: #000;
+                font-size: 25px;
+                font-weight: 500;
+            }
+        }
+
+        span {
+            color: #777;
+            font-size: 15px;
+        }
+
+    }
+    .chart {
+        svg {
+            width: 180px !important;
+        }
+    }
+}
