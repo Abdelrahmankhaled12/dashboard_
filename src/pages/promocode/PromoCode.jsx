@@ -6,18 +6,14 @@ const PromoCode = ({ data }) => {
 
     return (
         <>
-            {data && (
-                <>
-                    <BodyContent>
-                        <div className="promocode">
-                            <Title title={"PromoCode"} />
-                            <div className="show_promocode show_table">
-                                <TablePromoCode  data={data?.data} />
-                            </div>
-                        </div>
-                    </BodyContent>
-                </>
-            )}
+            <BodyContent>
+                <div className="promocode">
+                    <Title title={"PromoCode"} />
+                    <div className="show_promocode show_table">
+                        <TablePromoCode data={data?.data.reverse()} />
+                    </div>
+                </div>
+            </BodyContent>
         </>
     )
 }

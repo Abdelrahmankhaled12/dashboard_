@@ -2,9 +2,9 @@ import './style.scss'
 
 const Loading = () => {
     return (
-        <>
+        <div className='loading'>
             <div className="loader"></div> 
-        </>
+        </div>
     )
 }
 

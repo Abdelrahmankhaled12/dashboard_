@@ -1,39 +1,55 @@
-.dashboard {
-    padding-top: 50px;
+@import '../../mixins.scss';
 
-    .grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 20px;
+
+.sectionOne {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: end;
+    @include md{
+        grid-template-columns: 1.4fr 0.6fr;
     }
 
     .div {
+        margin-top: 65px;
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns:1fr;
         align-items: end;
-
+        height: fit-content;
+        @include sm{
+            grid-template-columns: 2fr 1fr;
+        }  
         .text {
             padding: 25px 20px;
-
             h4 {
                 color: #000;
             }
-
             p {
                 color: #777777ab;
             }
         }
-
         .image {
             position: relative;
-
             img {
                 width: 250px;
                 position: absolute;
                 bottom: 0px;
+                display: none;
+                @include sm{
+                    display: block;
+                }      
             }
         }
     }
+
+    .partTwo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
 }
 
 .boxShadow {
@@ -61,26 +77,31 @@ svg.moreVertIcon {
 }
 
 .boxes {
-    margin-top: 20px;
     .box {
         padding: 15px 20px;
+        height: fit-content;
+
         .top {
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             p {
                 color: #000000df;
                 text-transform: capitalize;
                 font-size: 20px;
             }
         }
+
         h5 {
             color: #000000d2;
             font-size: 30px;
         }
+
         .footerBox {
             display: flex;
             align-items: center;
+
             span {
                 background-color: rgba(14, 255, 14, 0.559);
                 color: white;
@@ -95,5 +116,59 @@ svg.moreVertIcon {
                 font-size: 14px;
             }
         }
+    }
+}
+
+.sectionTwo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 30px 0px;
+
+    @include md {
+        grid-template-columns: 1.8fr 1.2fr;
+    }
+
+    .partTwo {
+        .boxes {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+
+            @include sm {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}
+
+.sectionThree {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+
+    @include md {
+        grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .partTwo {
+        .boxes {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+
+            @include sm {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}
+
+.imgg {
+    width: 250px;
+    margin: 20px auto;
+    display: block;
+    @include sm {
+        display: none;
     }
 }

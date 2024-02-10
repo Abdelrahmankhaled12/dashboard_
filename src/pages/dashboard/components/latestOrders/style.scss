@@ -1,0 +1,14 @@
+.latestOrders {
+    height: fit-content;
+    .top {
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p {
+            color: #000000df;
+            text-transform: capitalize;
+            font-size: 17px;
+        }
+    }
+}

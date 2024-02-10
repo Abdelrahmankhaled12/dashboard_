@@ -11,30 +11,44 @@ import Orders from './pages/orders/Orders'
 import Customers from './pages/customers/Customers'
 import useFetch from './hooks/useFetch'
 import 'sweetalert2/src/sweetalert2.scss'
+import Login from './pages/login/Login'
+import { useSelector } from 'react-redux'
+import Animation from './components/animation/Animation'
 
 function App() {
 
-  // const { data: promoCodes, } = useFetch("promocodes");
-  // const { data: customers, } = useFetch("customers");
-  // const { data: orders, } = useFetch("orders");
-  // const { data: categories, } = useFetch("categories");
+  const { data: promoCodes, } = useFetch("promocodes");
+  const { data: customers, } = useFetch("customers");
+  const { data: orders, } = useFetch("orders");
+  const { data: categories, } = useFetch("categories");
+  const { data: products, } = useFetch("products");
+
+  const { logged } = useSelector(state => state.login)
+  console.log(logged)
 
   return (
     <>
       {
-        (true && true) && (
+        (!promoCodes || !products || !orders || !categories) && (
+          <Animation />
+        )
+      }
+      {
+        (orders && products) && (
           <BrowserRouter>
             <div className="flex">
+              {/* {logged && <SideBar />} */}
               <SideBar />
               <div className='bodyContent'>
                 <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/products" element={<Products />} />
+                  <Route path="/" element={<Login />} />
+                  <Route path="/dashboard" element={<Dashboard orders={orders} products={products} categories={categories} />} />
+                  <Route path="/products" element={<Products products={products} />} />
                   <Route path="/products/create" element={<CreaeProducts />} />
-                  {/* <Route path="/categories" element={<Categories data={categories} />} />
+                  <Route path="/categories" element={<Categories data={categories} />} />
                   <Route path="/promocode" element={<PromoCode data={promoCodes} />} />
                   <Route path="/orders" element={<Orders data={orders} />} />
-                  <Route path="/customers" element={<Customers data={customers} />} /> */}
+                  <Route path="/customers" element={<Customers data={customers} />} />
                 </Routes>
               </div>
             </div>

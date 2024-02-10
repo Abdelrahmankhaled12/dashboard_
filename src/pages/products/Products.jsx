@@ -1,26 +1,21 @@
-import useFetch from '../../hooks/useFetch'
 import BodyContent from '../../components/bodyContent/BodyContent'
 import Title from '../../components/title/Title'
 import TableProducts from './table/TableProducts'
 import StatisticsProducts from './statistics/StatisticsProducts'
 
-const Products = () => {
+const Products = ({ products }) => {
 
-    const { data, } = useFetch("products");
-    console.log(data)
     return (
         <>
-            {data && (
-                <BodyContent>
-                    <div className="products">
-                        <Title title={"Products"} />
-                        <StatisticsProducts data={data?.data} />
-                        <div className="show_products show_table">
-                            <TableProducts data={data?.data} />
-                        </div>
+            <BodyContent>
+                <div className="products">
+                    <Title title={"Products"} />
+                    <StatisticsProducts data={products?.data} />
+                    <div className="show_products show_table">
+                        <TableProducts data={products?.data.reverse()} />
                     </div>
-                </BodyContent>
-            )}
+                </div>
+            </BodyContent>
         </>
     )
 }

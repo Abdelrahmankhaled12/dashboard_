@@ -1,60 +1,55 @@
-import logo from '../../../assets/logo.avif'
-import ContentWrapper from '../../../components/contentWrapper/ContentWrapper'
 import './style.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useDispatch } from "react-redux";
-import { setLoggedAdmin } from '../../../store/admin'
+import cover from '../../assets/cover.png'
+import Checkbox from '@mui/material/Checkbox';
+import { setLogged } from '../../store/login';
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const Login = () => {
 
-    const [ email , setEmail ] = useState("")
-    const [ password , setPassword ] = useState("")
+    const [email, setEmail] = useState("admin@ecommerce.com")
+    const [password, setPassword] = useState("123456789")
     const dispatch = useDispatch()
     const [error, setError] = useState(false);
     const navigate = useNavigate();
 
-    const handleClick = (email , password) => {
-        if(email === "admin@ecommerce.com" && password === "123456789") {
-            dispatch(setLoggedAdmin(true))
-            navigate("/Admin/categories")
-        }else {
+    const handleClick = (email, password) => {
+        if (email === "admin@ecommerce.com" && password === "123456789") {
+            dispatch(setLogged(true))
+            navigate("/dashboard")
+        } else {
             setError(true)
         }
     }
 
     return (
         <div className="login">
-            <ContentWrapper>
-                <div className="logo">
-                    <Link to={'/'}>
-                        <img src={logo} alt="logo" />
-                    </Link>
+            <div className="logInContent grid">
+                <div className="image">
+                    <img src={cover} alt="" />
                 </div>
-                <div className="content_box">
-                    <div className="form">
-                        <h3>Hi, Admin</h3>
-                        <form action="" onSubmit={(e)=> e.preventDefault()}>
-                            <div className="email">
-                                <div className="icon">
-                                    <FontAwesomeIcon icon={faEnvelope} />
+                <div className="form">
+                    <div>
+                        <div className="text">
+                            <h4>Welcome to Admin 👋</h4>
+                            <p>Please sign-in to your account and start the adventure</p>
+                        </div>
+                        <form action="" onSubmit={(e)=>e.preventDefault()}>
+                            <input type="text" placeholder='Email or Username' onChange={(e)=>setEmail(e.target.value)}  value={email} />
+                            <input type="password" placeholder='Password' onChange={(e)=>setPassword(e.target.value)} value={password}/>
+                            <div className="forget">
+                                <div>
+                                    <Checkbox {...label} /> <span className='remember'>Remember Me</span>
                                 </div>
-                                <input type="email" placeholder='Email Address...' value={email} onChange={(e)=> setEmail(e.target.value)} />
+                                <p>Forgot Password?</p>
                             </div>
-                            <div className="password">
-                                <div className="icon">
-                                    <FontAwesomeIcon icon={faLock} />
-                                </div>
-                                <input placeholder='Password...' type="password" value={password} onChange={(e)=> setPassword(e.target.value)} />
-                            </div>
-                            <p className='notFount' style={error ? {"display":"block"} : {"display":"none"}}>invalid email or password</p>
-                            <button onClick={()=>handleClick(email,password)}>Log In</button>
+                            <button onClick={()=>handleClick(email, password)} className='styleButton'>Sign in</button>
                         </form>
                     </div>
                 </div>
-            </ContentWrapper>
+            </div>
         </div>
     )
 }

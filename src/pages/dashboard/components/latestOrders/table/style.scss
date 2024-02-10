@@ -1,0 +1,26 @@
+.footerTableBox {
+    ul {
+        li {
+            button.Mui-selected {
+                background-color: var(--primary);
+                color: white;
+                border: 1px solid var(--primary);
+
+                &:hover {
+                    background-color: var(--primary);
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+
+.css-h5odmr-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
+.css-h5odmr-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+    color: var(--primary) !important;
+}
+
+th {
+    background-color: #f3f3f4;
+}

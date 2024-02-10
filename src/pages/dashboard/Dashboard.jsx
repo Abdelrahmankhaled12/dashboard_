@@ -7,86 +7,123 @@ import Revenue from './components/revenue/Revenue';
 import TotalSales from './components/totalSales/TotalSales';
 import TotalRevenueCategory from './components/totalRevenueCategory/TotalRevenueCategory';
 import BestSellingProducts from './components/bestSellingProducts/BestSellingProducts';
+import LatestOrders from './components/latestOrders/LatestOrders';
+import LatestProduct from './components/latestProducts/LatestProduct';
+import TotalProductsOfCategory from './components/TotalProductsOfCategory/TotalProductsOfCategory';
 
 
-const Dashboard = () => {
+const Dashboard = ({ orders, products, categories }) => {
 
     // calculateMonthlyTotalPrices(orders?.data)
+    console.log(products)
 
     return (
         <>
             <BodyContent>
                 <div className="dashboard">
-                    <div className="grid grid_two">
-                        <div>
-                            <div className="div boxShadow" style={{marginBottom:"20px"}}>
-                                <div className="text">
-                                    <h4>Welcome back, Lucy! We've missed you. 👋</h4>
-                                    <p>Are you ready to start our journey? 🚀</p>
-                                </div>
-                                <div className="image">
-                                    <img src="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/illustrations/illustration-john-2.png" alt="" />
-                                </div>
+                    <div className="sectionOne">
+                        <img className='imgg' src="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/illustrations/illustration-john-2.png" alt="" />
+                        <div className="div boxShadow">
+                            <div className="text">
+                                <h4>Welcome back, Lucy! We've missed you. 👋</h4>
+                                <p>Are you ready to start our journey? 🚀</p>
                             </div>
-                            <TotalRevenueCategory />
+                            <div className="image">
+                                <img src="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/illustrations/illustration-john-2.png" alt="" />
+                            </div>
                         </div>
                         <div>
-                            <div className="gridTwo">
+                            <div className="partTwo">
                                 <Transactions />
                                 <Revenue />
                             </div>
+                        </div>
+                    </div>
+                    <TotalRevenueCategory />
+                    <div className="sectionTwo">
+                        <BestSellingProducts products={products} />
+                        <div className='partTwo'>
+                            <div className="boxes">
+                                <div className="box boxShadow">
+                                    <div className="top">
+                                        <p>Visitors</p>
+                                        <MoreVertIcon className='moreVertIcon' />
+                                    </div>
+                                    <h5>15000</h5>
+                                    <div className="footerBox">
+                                        <span>+14%</span>
+                                        <p>Since last month</p>
+                                    </div>
+                                </div>
+                                <div className="box boxShadow">
+                                    <div className="top">
+                                        <p>Income</p>
+                                        <MoreVertIcon className='moreVertIcon' />
+                                    </div>
+                                    <h5>15000</h5>
+                                    <div className="footerBox">
+                                        <span>+14%</span>
+                                        <p>Since last month</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <TotalProductsOfCategory categories={categories} />
+                        </div>
+                    </div>
+                    <div className="sectionThree">
+                        <LatestProduct products={products} />
+                        <div className="partTwo">
+                            <div className="boxes">
+                                <div className="box boxShadow">
+                                    <div className="top">
+                                        <p>Visitors</p>
+                                        <MoreVertIcon className='moreVertIcon' />
+                                    </div>
+                                    <h5>15000</h5>
+                                    <div className="footerBox">
+                                        <span>+14%</span>
+                                        <p>Since last month</p>
+                                    </div>
+                                </div>
+                                <div className="box boxShadow">
+                                    <div className="top">
+                                        <p>Income</p>
+                                        <MoreVertIcon className='moreVertIcon' />
+                                    </div>
+                                    <h5>15000</h5>
+                                    <div className="footerBox">
+                                        <span>+14%</span>
+                                        <p>Since last month</p>
+                                    </div>
+                                </div>
+                            </div>
                             <TotalSales />
-                        </div>
-
-
-                    </div>
-                    <div className="boxes grid grid_four">
-                        <div className="box boxShadow">
-                            <div className="top">
-                                <p>Visitors</p>
-                                <MoreVertIcon className='moreVertIcon' />
-                            </div>
-                            <h5>15000</h5>
-                            <div className="footerBox">
-                                <span>+14%</span>
-                                <p>Since last month</p>
-                            </div>
-                        </div>
-                        <div className="box boxShadow">
-                            <div className="top">
-                                <p>Income</p>
-                                <MoreVertIcon className='moreVertIcon' />
-                            </div>
-                            <h5>15000</h5>
-                            <div className="footerBox">
-                                <span>+14%</span>
-                                <p>Since last month</p>
-                            </div>
-                        </div>
-                        <div className="box boxShadow">
-                            <div className="top">
-                                <p>Pending Orders</p>
-                                <MoreVertIcon className='moreVertIcon' />
-                            </div>
-                            <h5>15000</h5>
-                            <div className="footerBox">
-                                <span>+14%</span>
-                                <p>Since last month</p>
-                            </div>
-                        </div>
-                        <div className="box boxShadow">
-                            <div className="top">
-                                <p>Completed Orders</p>
-                                <MoreVertIcon className='moreVertIcon' />
-                            </div>
-                            <h5>15000</h5>
-                            <div className="footerBox">
-                                <span>+14%</span>
-                                <p>Since last month</p>
+                            <div className="boxes">
+                                <div className="box boxShadow">
+                                    <div className="top">
+                                        <p>Visitors</p>
+                                        <MoreVertIcon className='moreVertIcon' />
+                                    </div>
+                                    <h5>15000</h5>
+                                    <div className="footerBox">
+                                        <span>+14%</span>
+                                        <p>Since last month</p>
+                                    </div>
+                                </div>
+                                <div className="box boxShadow">
+                                    <div className="top">
+                                        <p>Income</p>
+                                        <MoreVertIcon className='moreVertIcon' />
+                                    </div>
+                                    <h5>15000</h5>
+                                    <div className="footerBox">
+                                        <span>+14%</span>
+                                        <p>Since last month</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <BestSellingProducts />
                 </div>
             </BodyContent>
         </>

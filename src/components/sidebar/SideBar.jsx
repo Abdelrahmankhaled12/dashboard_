@@ -8,6 +8,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import LogoutIcon from '@mui/icons-material/Logout';
 const SideBar = () => {
 
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ const SideBar = () => {
                     <img src={logo} alt="logo" />
                 </div>
                 <ul>
-                    <li className={path.pathname === "/" ? "active" : ""} onClick={() => navigate("/")}>
+                    <li className={path.pathname === "/dashboard" ? "active" : ""} onClick={() => navigate("/dashboard")}>
                         <ListItemIcon>
                             <TuneIcon />
                         </ListItemIcon>
@@ -54,7 +55,7 @@ const SideBar = () => {
                         </ListItemIcon>
                         Orders
                     </li>
-                    <li className={path.pathname === "/customers" ? "active" : ""} onClick={() => navigate("/customers")}> 
+                    <li className={path.pathname === "/customers" ? "active" : ""} onClick={() => navigate("/customers")}>
                         <ListItemIcon>
                             <GroupsIcon />
                         </ListItemIcon>
@@ -68,8 +69,15 @@ const SideBar = () => {
                     </li>
                 </ul>
             </div>
-            <p>E-commerce</p>
-        </div >
+            <div>
+                <div className="logOut" onClick={() => navigate("/")}>
+                    <ListItemIcon>
+                        <LogoutIcon />
+                    </ListItemIcon>
+                    <p>Log out</p>
+                </div>
+            </div>
+        </div>
     )
 }
 

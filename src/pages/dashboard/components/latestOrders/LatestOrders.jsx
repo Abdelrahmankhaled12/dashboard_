@@ -1,8 +1,31 @@
-import React from 'react'
+import TableLatestOrders from './table/TableLatestOrders'
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import './style.scss'
 
-const LatestOrders = () => {
+function last10Elements(arr) {
+  if (arr.length <= 5) {
+      return arr;
+  } else {
+      return arr.slice(arr.length - 5);
+  }
+}
+
+
+const LatestOrders = ( { orders }) => {
+
   return (
-    <div>LatestOrders</div>
+    <div className='latestOrders'>
+      <div className="boxShadow">
+        <div className="top">
+          <p>Total revenue for each category</p>
+          <MoreVertIcon className='moreVertIcon' />
+        </div>
+        <div className="latestOrderTable">
+        <TableLatestOrders data={last10Elements(orders.data)} />
+
+        </div>
+      </div>
+    </div>
   )
 }
 

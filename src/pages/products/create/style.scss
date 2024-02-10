@@ -120,3 +120,17 @@
 .form-outline {
     margin-bottom: 10px;
 }
+
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #7776;
+    color: #777777f2;
+    outline: none;
+}
+
+option {
+    cursor: pointer;
+}

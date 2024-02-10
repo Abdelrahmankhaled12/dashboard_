@@ -11,7 +11,8 @@ const TotalRevenueCategory = () => {
                     <MoreVertIcon className='moreVertIcon' />
                 </div>
                 <TotalCategoryEarning />
-            </div></div>
+            </div>
+        </div>
     )
 }
 
