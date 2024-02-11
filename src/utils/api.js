@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const KEY = "http://127.0.0.1:8000/";
+const KEY = "https://dashflow.store/laravel/public/";
 
 export const PRODUCT_API = KEY + "api/products";
 
