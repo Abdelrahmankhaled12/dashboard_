@@ -14,7 +14,7 @@ function last10Elements(arr) {
 const LatestProduct = ({ products }) => {
 
     return (
-        <div className='latestOrders'>
+        <div className='latestProducts'>
             <div className="boxShadow">
                 <div className="top">
                     <p>latest products</p>
