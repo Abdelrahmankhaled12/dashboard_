@@ -1,5 +1,9 @@
+@import '../../../../mixins.scss';
+
+
 .latestOrders {
     height: fit-content;
+    display: none;
     .top {
         padding: 15px 20px;
         display: flex;
@@ -10,5 +14,8 @@
             text-transform: capitalize;
             font-size: 17px;
         }
+    }
+    @include sm {
+        display: block;
     }
 }

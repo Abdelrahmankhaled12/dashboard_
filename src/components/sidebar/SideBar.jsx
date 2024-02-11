@@ -9,14 +9,16 @@ import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useDispatch } from "react-redux";
+import { setLogged } from '../../store/login';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
 const SideBar = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
     const path = useLocation();
-    console.log(path.pathname)
-
-
+    const dispatch = useDispatch()
 
     return (
         <div className="sidebar">
@@ -39,7 +41,7 @@ const SideBar = () => {
                     </li>
                     <li className={path.pathname === "/products/create" ? "active" : ""} onClick={() => navigate("/products/create")}>
                         <ListItemIcon>
-                            <BusinessCenterIcon />
+                            <AddShoppingCartIcon />
                         </ListItemIcon>
                         Add Product
                     </li>
@@ -70,7 +72,7 @@ const SideBar = () => {
                 </ul>
             </div>
             <div>
-                <div className="logOut" onClick={() => navigate("/")}>
+                <div className="logOut" onClick={() => {navigate("/") , dispatch(setLogged(false))}}>
                     <ListItemIcon>
                         <LogoutIcon />
                     </ListItemIcon>

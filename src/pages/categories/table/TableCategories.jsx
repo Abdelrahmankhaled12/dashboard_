@@ -21,7 +21,7 @@ import {
 import { jsPDF } from 'jspdf'; //or use your library of choice here
 import autoTable from 'jspdf-autotable';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import { Delete_category } from '../CateegoriesApi';
+import { SendCategoryDeleteApi } from '../CateegoriesApi';
 import './style.scss'
 import AddCategory from '../addCategory/AddCategory';
 import { useState } from 'react';
@@ -165,7 +165,7 @@ const TableCategories = ({ data }) => {
                                 }
                             }
 
-                            onClick={() => Delete_category(table.getSelectedRowModel().rows.map(ele => ele.original))}
+                            onClick={() => SendCategoryDeleteApi(table.getSelectedRowModel().rows.map(ele => ele.original))}
                         >
                             <FontAwesomeIcon icon={faTrashCan} />
                         </button>
@@ -174,7 +174,7 @@ const TableCategories = ({ data }) => {
                 <MRT_ToolbarAlertBanner stackAlertBanner table={table} />
             </Stack >
             <AddCategory isOpen={isOpen} closeModal={() => setIsOpen(false)} data={data}/>
-            <UpdateCategory isOpen={isOpenUpdate} closeModal={() => setIsOpenUpdate(false)} value={table?.getSelectedRowModel()?.rows[0]?.original} />
+            <UpdateCategory isOpen={isOpenUpdate} data={data} closeModal={() => setIsOpenUpdate(false)} value={table?.getSelectedRowModel()?.rows[0]?.original} />
         </>
 
     );

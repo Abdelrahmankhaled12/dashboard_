@@ -1,7 +1,5 @@
 
 import { useState } from "react";
-import useFetch from "../../../hooks/useFetch";
-import { Add_Product } from "../../../utils/api";
 import './style.scss'
 import Title from '../../../components/title/Title'
 import BodyContent from "../../../components/bodyContent/BodyContent";
@@ -11,14 +9,14 @@ import Price from "./price/Price";
 import Category from "./category/Category";
 import Image from './image/Image'
 import Size from "./size/Size";
+import { SendProductAddApi } from "../functions";
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 
-const CreateProducts = () => {
+const CreateProducts = ({ data }) => {
     const [name, setName] = useState("")
     const [barCode, setBarCode] = useState("")
-
-    const [colors , setColors] = useState([])
-
+    const [colors, setColors] = useState([])
     const [price, setPrice] = useState(0)
     const [discount, setDiscount] = useState(0)
     const [date, setDate] = useState("")
@@ -27,7 +25,7 @@ const CreateProducts = () => {
     const [category, setCategory] = useState("")
     const [checkErrors, setCheckErrors] = useState([false, false, false, false, false, false])
     const [images, setImages] = useState([])
-    const [ size, setSize ] = useState([])
+    const [size, setSize] = useState([])
 
     const formSumbit = () => {
         let checkSendDateToApi = true;
@@ -38,84 +36,110 @@ const CreateProducts = () => {
         stock === 0 ? check.push(true) : check.push(false);
         barCode === "" ? check.push(true) : check.push(false);
 
-        Add_Product(
+        let productData = {
             name,
-            description,
+            category,
             barCode,
             price,
-            discount,
-            date,
-            category,
-            images,
             colors,
+            description,
+            stock,
+            images,
             size,
-            stock
-        )
+            date,
+            discount
+        }
+
+        if (checkSendDateToApi) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: `Are you sure you want to add this product?`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, Add"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    SendProductAddApi(productData)
+                        .then(responseData => {
+                            if (responseData.status === 201) {
+                                Swal.fire({
+                                    title: "Added!",
+                                    text: `The new product has been added`,
+                                    icon: "success"
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.reload();
+                                    }
+                                })
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        });
+                }
+            });
+        }
 
     }
-
-    console.log(images)
-
-    const { data, loading, } = useFetch("categories");
 
 
     return (
         <>
-            {data && (
-                <BodyContent>
-                    <Title title={"Add Product"} />
-                    <div className="product">
-                        <form action="" onSubmit={(e) => e.preventDefault()}>
-                            <div className="titleForm">
-                                <div className="text">
-                                    <h2>Add a new Product</h2>
-                                    <p>Orders placed across your store</p>
-                                </div>
-                                <div className="buttons">
-                                    <button type="button">discard</button>
-                                    <button type="sumbit" onClick={() => formSumbit()} >Publish product</button>
-                                </div>
+            <BodyContent>
+                <Title title={"Add Product"} />
+                <div className="product">
+                    <form action="" onSubmit={(e) => e.preventDefault()}>
+                        <div className="titleForm">
+                            <div className="text">
+                                <h2>Add a new Product</h2>
+                                <p>Orders placed across your store</p>
                             </div>
-                            <div className="grid">
-                                <ProductInformation
-                                    name={name}
-                                    stock={stock}
-                                    description={description}
-                                    barCode={barCode}
-                                    setBarCode={(value) => setBarCode(value)}
-                                    setName={(value) => setName(value)}
-                                    setStock={(value) => setStock(value)}
-                                    setDescription={(value) => setDescription(value)}
-                                    error={[checkErrors[0], checkErrors[1], checkErrors[2] , checkErrors[3]]}
-                                />
-                                <div>
-                                    <Price
-                                        price={price}
-                                        setPrice={(value) => setPrice(value)}
-                                        error={checkErrors[4]}
-                                        discount={discount}
-                                        setDiscount={(value) => setDiscount(value)}
-                                        setDate={(value) => setDate(value)}
-                                    />
-                                    <Category
-                                        data={data?.data}
-                                        setCategory={(value) => setCategory(value)}
-                                        error={[checkErrors[5]]}
-                                    />
-                                </div>
+                            <div className="buttons">
+                                <button type="button">discard</button>
+                                <button type="sumbit" onClick={() => formSumbit()} >Publish product</button>
                             </div>
-                            <Image
-                                images={images}
-                                setImages={(value) => setImages(value)}
+                        </div>
+                        <div className="grid">
+                            <ProductInformation
+                                name={name}
+                                stock={stock}
+                                description={description}
+                                barCode={barCode}
+                                setBarCode={(value) => setBarCode(value)}
+                                setName={(value) => setName(value)}
+                                setStock={(value) => setStock(value)}
+                                setDescription={(value) => setDescription(value)}
+                                error={[checkErrors[0], checkErrors[1], checkErrors[2], checkErrors[3]]}
                             />
-                            <div className="grid">
-                                <Colors setColor={value=>setColors(value)} colors={colors} />
-                                <Size sizes={size} setSize={(value) => setSize(value)}/>
+                            <div>
+                                <Price
+                                    price={price}
+                                    setPrice={(value) => setPrice(value)}
+                                    error={checkErrors[4]}
+                                    discount={discount}
+                                    setDiscount={(value) => setDiscount(value)}
+                                    setDate={(value) => setDate(value)}
+                                />
+                                <Category
+                                    data={data?.data}
+                                    setCategory={(value) => setCategory(value)}
+                                    error={[checkErrors[5]]}
+                                />
                             </div>
-                        </form>
-                    </div>
-                </BodyContent>
-            )}
+                        </div>
+                        <Image
+                            images={images}
+                            setImages={(value) => setImages(value)}
+                        />
+                        <div className="grid">
+                            <Colors setColor={value => setColors(value)} colors={colors} />
+                            <Size sizes={size} setSize={(value) => setSize(value)} />
+                        </div>
+                    </form>
+                </div>
+            </BodyContent>
         </>
     )
 }

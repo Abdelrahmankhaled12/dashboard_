@@ -12,7 +12,7 @@ const Products = ({ products }) => {
                     <Title title={"Products"} />
                     <StatisticsProducts data={products?.data} />
                     <div className="show_products show_table">
-                        <TableProducts data={products?.data.reverse()} />
+                        <TableProducts data={products?.data} />
                     </div>
                 </div>
             </BodyContent>

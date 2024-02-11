@@ -5,7 +5,7 @@ const SelectCategory = ({ categories , setCategory }) => {
         <div>
             <select onChange={(e)=> setCategory(e.target.value)}>
                 {categories.map(category => (
-                    <option value={category.category_id}>{category.category_name}</option>
+                    <option key={category.category_id} value={category.category_id}>{category.category_name}</option>
                 ))}
             </select>
         </div>

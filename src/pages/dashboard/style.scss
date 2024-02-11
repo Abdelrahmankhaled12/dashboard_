@@ -1,71 +1,75 @@
 @import '../../mixins.scss';
 
 
-.sectionOne {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-    margin-bottom: 20px;
-    align-items: end;
-    @include md{
-        grid-template-columns: 1.4fr 0.6fr;
-    }
-
-    .div {
-        margin-top: 65px;
+.dashboard {
+    .sectionOne {
         display: grid;
-        grid-template-columns:1fr;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-bottom: 20px;
         align-items: end;
-        height: fit-content;
-        @include sm{
-            grid-template-columns: 2fr 1fr;
-        }  
-        .text {
-            padding: 25px 20px;
-            h4 {
-                color: #000;
+        @include md {
+            grid-template-columns: 1.4fr 0.6fr;
+        }
+        .div {
+            display: grid;
+            grid-template-columns: 1fr;
+            align-items: end;
+            height: fit-content;
+            @include smm {
+                grid-template-columns: 2fr 1fr;
+                margin-top: 65px;
             }
-            p {
-                color: #777777ab;
+            .text {
+                padding: 25px 20px;
+                h4 {
+                    color: #000;
+                }
+                p {
+                    color: #777777ab;
+                }
+            }
+            .image {
+                position: relative;
+                img {
+                    width: 250px;
+                    position: absolute;
+                    bottom: 0px;
+                    display: none;
+                    @include smm {
+                        display: block;
+                    }
+                }
             }
         }
-        .image {
-            position: relative;
-            img {
-                width: 250px;
-                position: absolute;
-                bottom: 0px;
-                display: none;
-                @include sm{
-                    display: block;
-                }      
-            }
+        .partTwo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
         }
     }
-
-    .partTwo {
+    .sectionTwo {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 10px;
-        margin-top: 10px;
+        margin: 30px 0px;
+        @include md {
+            grid-template-columns: 1.8fr 1.2fr;
+        }
+        .partTwo {
+            .boxes {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 10px;
+                @include sm {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+        }
     }
-
 }
 
-.boxShadow {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0.25rem 0.5rem rgba(58, 53, 65, .1) !important;
-}
-
-
-.gridTwo {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-
-
-}
 
 rect {
     fill: var(--primary) !important;
@@ -119,34 +123,12 @@ svg.moreVertIcon {
     }
 }
 
-.sectionTwo {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin: 30px 0px;
-
-    @include md {
-        grid-template-columns: 1.8fr 1.2fr;
-    }
-
-    .partTwo {
-        .boxes {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-
-            @include sm {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-    }
-}
 
 .sectionThree {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
-
+    margin-bottom: 20px;
     @include md {
         grid-template-columns: 1.2fr 0.8fr;
     }
@@ -168,7 +150,30 @@ svg.moreVertIcon {
     width: 250px;
     margin: 20px auto;
     display: block;
-    @include sm {
+
+    @include smm {
         display: none;
+    }
+}
+
+.sectionFour {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+
+    @include md {
+        grid-template-columns: 0.8fr 1.2fr;
+    }
+
+    .partTwo {
+        .boxes {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+
+            @include sm {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
     }
 }

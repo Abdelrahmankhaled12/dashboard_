@@ -2,9 +2,9 @@ import './style.scss'
 
 const CellTotalOrders = ({ customer }) => {
     return (
-        <td className='cellOrderPayment'>
+        <div className='cellOrderPayment'>
             <p>{customer.orders_count}</p>
-        </td>
+        </div>
     )
 }
 

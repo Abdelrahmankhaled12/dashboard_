@@ -3,7 +3,7 @@ import './style.scss'
 const Animation = () => {
     return (
         <div className='animation'>
-            <div class="loader"></div>
+            <div className="loader"></div>
         </div>
     )
 }

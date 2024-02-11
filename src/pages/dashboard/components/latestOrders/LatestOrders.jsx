@@ -17,7 +17,7 @@ const LatestOrders = ( { orders }) => {
     <div className='latestOrders'>
       <div className="boxShadow">
         <div className="top">
-          <p>Total revenue for each category</p>
+          <p>Latest Orders</p>
           <MoreVertIcon className='moreVertIcon' />
         </div>
         <div className="latestOrderTable">

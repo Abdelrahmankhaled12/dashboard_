@@ -1,12 +1,11 @@
-import React from 'react'
+import './style.scss'
 
-const CellOrderID = ({order}) => {
+const CellOrderID = ({ order }) => {
     return (
-        <>
-            <td className='cellOrderId'>
-                #{+order.id + 6501}
-            </td>
-        </>)
+        <div className='cellOrderId'>
+            #{+order.id + 6501}
+        </div>
+    )
 }
 
 export default CellOrderID

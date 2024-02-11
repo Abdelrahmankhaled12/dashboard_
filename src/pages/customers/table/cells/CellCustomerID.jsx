@@ -2,11 +2,10 @@ import './style.scss'
 
 const CellCustomerID = ({ customer }) => {
     return (
-        <>
-            <td className='cellCustomerID'>
-                #{+customer.id + 11501}
-            </td>
-        </>)
+        <div className='cellCustomerID'>
+            #{+customer.id + 11501}
+        </div>
+    )
 }
 
 export default CellCustomerID

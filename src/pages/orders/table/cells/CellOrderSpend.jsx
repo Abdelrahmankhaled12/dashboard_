@@ -2,9 +2,9 @@ import './style.scss'
 
 const CellOrderSpend = ({ order }) => {
     return (
-        <td className='cellOrderPayment'>
+        <div className='cellOrderPayment'>
             <p>${order.total_price.toFixed(2)}</p>
-        </td>
+        </div>
     )
 }
 

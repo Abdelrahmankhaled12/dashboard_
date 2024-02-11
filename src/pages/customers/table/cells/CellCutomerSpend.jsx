@@ -2,9 +2,9 @@ import './style.scss'
 
 const CellCutomerSpend = ({ customer }) => {
     return (
-        <td className='cellCutomerSpend'>
+        <div className='cellCutomerSpend'>
             <p>${customer.total_paid.toFixed(2)}</p>
-        </td>
+        </div>
     )
 }
 

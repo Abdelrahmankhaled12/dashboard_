@@ -1,8 +1,9 @@
 import './style.scss'
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { RevenuePrice } from '../../functions';
 
-const Revenue = () => {
+const Revenue = ({ data }) => {
     return (
         <div className="revenue boxShadow">
             <div className="top">
@@ -13,8 +14,7 @@ const Revenue = () => {
             </div>
             <div className="text">
                 <p>Revenue</p>
-                <p>$9532k</p>
-                <p>last month</p>
+                <p>${RevenuePrice(data)}</p>
             </div>
         </div>
     )

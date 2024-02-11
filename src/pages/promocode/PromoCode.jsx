@@ -10,7 +10,7 @@ const PromoCode = ({ data }) => {
                 <div className="promocode">
                     <Title title={"PromoCode"} />
                     <div className="show_promocode show_table">
-                        <TablePromoCode data={data?.data.reverse()} />
+                        <TablePromoCode data={data?.data} />
                     </div>
                 </div>
             </BodyContent>

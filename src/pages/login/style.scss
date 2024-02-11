@@ -7,6 +7,7 @@
         grid-template-columns: 1fr;
         justify-content: center;
         align-items: center;
+        display: grid;
         @include md {
             grid-template-columns: 2fr 1fr;
         }
