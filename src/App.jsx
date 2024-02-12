@@ -9,6 +9,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import PromoCode from './pages/promocode/PromoCode'
 import Orders from './pages/orders/Orders'
 import Customers from './pages/customers/Customers'
+import useFetch from './hooks/useFetch'
 import 'sweetalert2/src/sweetalert2.scss'
 import Login from './pages/login/Login'
 import { useSelector } from 'react-redux'
@@ -16,31 +17,105 @@ import Animation from './components/animation/Animation'
 
 function App() {
 
-  // const { data: promoCodes, } = useFetch("promocodes");
-  // const { data: customers, } = useFetch("customers");
-  // const { data: orders, } = useFetch("orders");
-  // const { data: categories, } = useFetch("categories");
-  // const { data: products, } = useFetch("products");
+  const { data: promoCodes, } = useFetch("promocodes");
+  const { data: customers, } = useFetch("customers");
+  const { data: orders, } = useFetch("orders");
+  const { data: categories, } = useFetch("categories");
+  const { data: products, } = useFetch("products");
+
+  const { logged } = useSelector(state => state.login)
 
   return (
     <>
-      <BrowserRouter>
-        <div className="flex">
-          <SideBar />
-          <div className='bodyContent'>
-            <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/dashboard" element={<Dashboard  />} />
-              {/* <Route path="/products" element={<Products products={products} />} />
-              <Route path="/products/create" element={<CreaeProducts data={categories} />} />
-              <Route path="/categories" element={<Categories data={categories} />} />
-              <Route path="/orders" element={<Orders data={orders} />} />
-              <Route path="/customers" element={<Customers data={customers} />} />
-              <Route path="/promocode" element={<PromoCode data={promoCodes} />} /> */}
-            </Routes>
-          </div>
-        </div>
-      </BrowserRouter>
+      {
+        (!promoCodes || !products || !orders || !categories) && (
+          <Animation />
+        )
+      }
+      {
+        (orders && products && customers && categories) && (
+          <BrowserRouter>
+            <div className="flex">
+              {logged && <SideBar />}
+              <div className='bodyContent'>
+                <Routes>
+                  <Route path="/" element={<Login />} />
+                  <Route
+                    path="/dashboard"
+                    element={
+                      logged ? (
+                        <Dashboard orders={orders} products={products} categories={categories} />
+                      ) : (
+                        <Navigate to="/" replace />
+                      )
+                    }
+                  />
+                  <Route
+                    path="/products"
+                    element={
+                      logged ? (
+                        <Products products={products} />
+                      ) : (
+                        <Navigate to="/" replace />
+                      )
+                    }
+                  />
+                  <Route
+                    path="/products/create"
+                    element={
+                      logged ? (
+                        <CreaeProducts  data={categories}/>
+                      ) : (
+                        <Navigate to="/" replace />
+                      )
+                    }
+                  />
+                  <Route
+                    path="/categories"
+                    element={
+                      logged ? (
+                        <Categories data={categories} />
+                      ) : (
+                        <Navigate to="/" replace />
+                      )
+                    }
+                  />
+                  <Route
+                    path="/orders"
+                    element={
+                      logged ? (
+                        <Orders data={orders} />
+                      ) : (
+                        <Navigate to="/" replace />
+                      )
+                    }
+                  />
+                  <Route
+                    path="/customers"
+                    element={
+                      logged ? (
+                        <Customers data={customers} />
+                      ) : (
+                        <Navigate to="/" replace />
+                      )
+                    }
+                  />
+                  <Route
+                    path="/promocode"
+                    element={
+                      logged ? (
+                        <PromoCode data={promoCodes} />
+                      ) : (
+                        <Navigate to="/" replace />
+                      )
+                    }
+                  />
+                </Routes>
+              </div>
+            </div>
+          </BrowserRouter>
+        )
+      }
     </>
   )
 }

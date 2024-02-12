@@ -19,9 +19,8 @@ const SideBar = () => {
     const path = useLocation();
     const dispatch = useDispatch()
 
-
     return (
-        <div className="sidebar" style={{display: path.pathname === "/" ? "none" : "flex"}}>
+        <div className="sidebar">
             <div>
                 <div className="logo">
                     <img src={logo} alt="logo" />
