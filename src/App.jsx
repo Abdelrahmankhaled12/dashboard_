@@ -23,8 +23,6 @@ function App() {
   const { data: categories, } = useFetch("categories");
   const { data: products, } = useFetch("products");
 
-  const { logged } = useSelector(state => state.login)
-
   return (
     <>
       {
@@ -36,80 +34,17 @@ function App() {
         (orders && products && customers && categories) && (
           <BrowserRouter>
             <div className="flex">
-              {logged && <SideBar />}
+              <SideBar />
               <div className='bodyContent'>
                 <Routes>
                   <Route path="/" element={<Login />} />
-                  <Route
-                    path="/dashboard"
-                    element={
-                      logged ? (
-                        <Dashboard orders={orders} products={products} categories={categories} />
-                      ) : (
-                        <Navigate to="/" replace />
-                      )
-                    }
-                  />
-                  <Route
-                    path="/products"
-                    element={
-                      logged ? (
-                        <Products products={products} />
-                      ) : (
-                        <Navigate to="/" replace />
-                      )
-                    }
-                  />
-                  <Route
-                    path="/products/create"
-                    element={
-                      logged ? (
-                        <CreaeProducts  data={categories}/>
-                      ) : (
-                        <Navigate to="/" replace />
-                      )
-                    }
-                  />
-                  <Route
-                    path="/categories"
-                    element={
-                      logged ? (
-                        <Categories data={categories} />
-                      ) : (
-                        <Navigate to="/" replace />
-                      )
-                    }
-                  />
-                  <Route
-                    path="/orders"
-                    element={
-                      logged ? (
-                        <Orders data={orders} />
-                      ) : (
-                        <Navigate to="/" replace />
-                      )
-                    }
-                  />
-                  <Route
-                    path="/customers"
-                    element={
-                      logged ? (
-                        <Customers data={customers} />
-                      ) : (
-                        <Navigate to="/" replace />
-                      )
-                    }
-                  />
-                  <Route
-                    path="/promocode"
-                    element={
-                      logged ? (
-                        <PromoCode data={promoCodes} />
-                      ) : (
-                        <Navigate to="/" replace />
-                      )
-                    }
-                  />
+                  <Route path="/dashboard" element={<Dashboard orders={orders} products={products} categories={categories} />} />
+                  <Route path="/products" element={<Products products={products} />} />
+                  <Route path="/products/create" element={<CreaeProducts data={categories} />} />
+                  <Route path="/categories" element={<Categories data={categories} />} />
+                  <Route path="/orders" element={<Orders data={orders} />} />
+                  <Route path="/customers" element={<Customers data={customers} />} />
+                  <Route path="/promocode" element={<PromoCode data={promoCodes} />} />
                 </Routes>
               </div>
             </div>

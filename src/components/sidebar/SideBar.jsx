@@ -16,12 +16,12 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 const SideBar = () => {
 
     const navigate = useNavigate();
-    const location = useLocation();
     const path = useLocation();
     const dispatch = useDispatch()
 
+
     return (
-        <div className="sidebar">
+        <div className="sidebar" style={{display: path.pathname === "/" ? "none" : "flex"}}>
             <div>
                 <div className="logo">
                     <img src={logo} alt="logo" />
