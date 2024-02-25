@@ -14,6 +14,8 @@ import 'sweetalert2/src/sweetalert2.scss'
 import Login from './pages/login/Login'
 import { useSelector } from 'react-redux'
 import Animation from './components/animation/Animation'
+import CustomerDetails from './pages/customerDetails/CustomerDetails';
+import OrderDetails from './pages/orderDetails/OrderDetails';
 
 function App() {
 
@@ -22,18 +24,22 @@ function App() {
   const { data: orders, } = useFetch("orders");
   const { data: categories, } = useFetch("categories");
   const { data: products, } = useFetch("products");
+  const { data: ordersData, } = useFetch("orders/2039");
+  const { data: customer, } = useFetch("customer_details?phone=01148173525");
 
   const { logged } = useSelector(state => state.login)
+  
+  console.log(customer)
 
   return (
     <>
       {
-        (!promoCodes || !products || !orders || !categories) && (
+        (!promoCodes || !products || !orders || !categories || !ordersData) && (
           <Animation />
         )
       }
       {
-        (orders && products && customers && categories) && (
+        (orders && products && customers && categories && ordersData && customer) && (
           <BrowserRouter>
             <div className="flex">
               {logged && <SideBar />}
@@ -64,7 +70,7 @@ function App() {
                     path="/products/create"
                     element={
                       logged ? (
-                        <CreaeProducts  data={categories}/>
+                        <CreaeProducts data={categories} />
                       ) : (
                         <Navigate to="/" replace />
                       )
@@ -91,10 +97,30 @@ function App() {
                     }
                   />
                   <Route
+                    path="/order/details"
+                    element={
+                      logged ? (
+                        <OrderDetails data={ordersData} />
+                      ) : (
+                        <Navigate to="/" replace />
+                      )
+                    }
+                  />
+                  <Route
                     path="/customers"
                     element={
                       logged ? (
                         <Customers data={customers} />
+                      ) : (
+                        <Navigate to="/" replace />
+                      )
+                    }
+                  />
+                  <Route
+                    path="/customers/details"
+                    element={
+                      logged ? (
+                        <CustomerDetails data={customer} />
                       ) : (
                         <Navigate to="/" replace />
                       )

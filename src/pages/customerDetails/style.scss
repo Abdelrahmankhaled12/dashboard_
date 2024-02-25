@@ -1,0 +1,66 @@
+@import '../../mixins.scss';
+
+.customerDetails {
+    .top {
+        justify-content: space-between;
+        align-items: start;
+        flex-direction: column;
+        gap: 10px;
+
+        .infoCustomer {
+            line-height: 1.4;
+
+            h5 {
+                font-size: 25px;
+                margin-bottom: 0;
+            }
+
+            p {
+                color: #777777b6;
+            }
+        }
+
+        button {
+            color: #ff4c51;
+            background-color: transparent;
+            border: 1px solid #ffa6a8;
+            font-size: 17px;
+            text-transform: uppercase;
+            padding: 4px 20px;
+            transition: 0.5s;
+            font-weight: 500;
+            border-radius: 5px;
+            box-shadow: 0px 1px 5px 0px rgba(58, 53, 65, .12);
+
+            &:hover {
+                background-color: red;
+                color: white;
+            }
+        }
+
+        @include sm {
+            align-items: end;
+            flex-direction: row;
+            gap: 0px;
+        }
+    }
+
+    .grid {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+
+        @include md {
+            grid-template-columns: 0.8fr 1.2fr;
+        }
+
+        .tableOrdersCustomer {
+            overflow: auto;
+            h3 {
+                padding: 20px 30px 5px;
+                color: #000;
+            }
+        }
+    }
+}

@@ -1,0 +1,60 @@
+.customerDetailsOrder {
+    .boxShadow {
+        padding: 10px 30px 20px;
+        h4 {
+            margin: 10px 0px 20px;
+            color: #544f5a;
+            font-size: 17px;
+        }
+        .flex {
+            gap: 5px;
+            .text {
+                line-height: 1.4;
+                h5 {
+                    font-size: 14px;
+                    color: #544f5a;
+                    margin-bottom: 2px;
+                }
+                p {
+                    color: #777777c9;
+                    font-size: 13px;
+                }
+            }
+        }
+        .totalOrders {
+            margin: 20px 0px;
+            align-items: center;
+            gap: 10px;
+            .icon {
+                width: 40px;
+                height: 40px;
+                background-color: #e6f7d9 !important;
+                color: #56ca00 !important;
+                position: relative;
+                border-radius: 50%;
+                svg {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    
+                }
+            }
+            p {
+                color: #544f5a;
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+        h3 {
+            margin-top: 20px;
+            margin-bottom: 3px;
+            font-size: 18px;
+            color: #544f5a;
+        }
+        p {
+            color: #777777c0;
+            font-size: 15px;
+        }
+    }
+}

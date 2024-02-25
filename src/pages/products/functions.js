@@ -1,7 +1,6 @@
 import { PRODUCT_API } from "../../utils/api";
 
 export const SendProductAddApi = (data) => {
-    console.log(data)
     return new Promise((resolve, reject) => {
         const formData = new FormData();
         formData.append('title', data.name);

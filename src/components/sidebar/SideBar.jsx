@@ -12,7 +12,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { useDispatch } from "react-redux";
 import { setLogged } from '../../store/login';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-
+import PersonIcon from '@mui/icons-material/Person';
 const SideBar = () => {
 
     const navigate = useNavigate();
@@ -56,11 +56,23 @@ const SideBar = () => {
                         </ListItemIcon>
                         Orders
                     </li>
+                    <li className={path.pathname === "/order/details" ? "active" : ""} onClick={() => navigate("/order/details")}>
+                        <ListItemIcon>
+                            <LocalGroceryStoreIcon />
+                        </ListItemIcon>
+                        Order Details
+                    </li>
                     <li className={path.pathname === "/customers" ? "active" : ""} onClick={() => navigate("/customers")}>
                         <ListItemIcon>
                             <GroupsIcon />
                         </ListItemIcon>
                         Customers
+                    </li>
+                    <li className={path.pathname === "/customers/details" ? "active" : ""} onClick={() => navigate("/customers/details")}>
+                        <ListItemIcon>
+                            <PersonIcon />
+                        </ListItemIcon>
+                        Customer Details
                     </li>
                     <li className={path.pathname === "/promocode" ? "active" : ""} onClick={() => navigate("/promocode")}>
                         <ListItemIcon>
